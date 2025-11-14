@@ -10,6 +10,10 @@ const polaroids = [
     { caption: 'Caption Here' },
     { caption: 'Caption Here' },
     { caption: 'Caption Here' },
+    { caption: 'Caption Here' },
+    { caption: 'Caption Here' },
+    { caption: 'Caption Here' },
+    { caption: 'Caption Here' },
     { caption: 'Caption Here' }
 ];
 
