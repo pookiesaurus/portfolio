@@ -116,12 +116,14 @@
         /* Header */
         header {
             padding: 2rem 0;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            border-bottom: 1px solid var(--blue-soft);
+            box-shadow: 0 4px 20px var(--shadow-soft);
         }
         
         nav {
@@ -144,13 +146,13 @@
         .logo-icon {
             width: 32px;
             height: 32px;
-            background: linear-gradient(135deg, var(--blue-primary), var(--accent-cyan));
-            border-radius: 8px;
+            background: linear-gradient(135deg, var(--blue-primary), var(--pink-light));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            box-shadow: 0 4px 12px var(--blue-glow);
+            box-shadow: 0 4px 16px var(--shadow-medium);
         }
         
         nav ul {
@@ -168,7 +170,7 @@
         }
         
         nav a:hover {
-            color: var(--blue-light);
+            color: var(--blue-accent);
         }
         
         /* Hero Section */
@@ -185,27 +187,24 @@
         
         .hero-tag {
             display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 0.5rem 1.25rem;
+            background: var(--blue-soft);
+            border: 2px solid var(--blue-light);
             border-radius: 50px;
-            color: var(--blue-light);
+            color: var(--text-primary);
             font-size: 0.875rem;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px var(--shadow-soft);
         }
         
         h1 {
             font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 600;
+            font-weight: 700;
             font-family: 'Space Grotesk', sans-serif;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--text-primary), var(--blue-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text-primary);
         }
         
         .hero-subtitle {
@@ -245,26 +244,27 @@
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, var(--blue-primary), var(--accent-cyan));
+            background: var(--blue-accent);
             color: white;
-            box-shadow: 0 4px 20px var(--blue-glow);
+            box-shadow: 0 4px 20px var(--shadow-medium);
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px var(--blue-glow);
+            box-shadow: 0 8px 30px var(--shadow-medium);
+            background: var(--blue-primary);
         }
         
         .btn-secondary {
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--blue-light);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            backdrop-filter: blur(10px);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 2px solid var(--blue-light);
+            box-shadow: 0 4px 12px var(--shadow-soft);
         }
         
         .btn-secondary:hover {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: var(--blue-light);
+            background: var(--blue-soft);
+            border-color: var(--blue-accent);
         }
         
         /* About Section */
@@ -287,18 +287,18 @@
         }
         
         .skill-card {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 16px;
+            background: var(--bg-card);
+            border: 2px solid var(--blue-soft);
+            border-radius: 20px;
             padding: 2rem;
-            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            box-shadow: 0 8px 24px var(--shadow-soft);
         }
         
         .skill-card:hover {
-            border-color: var(--blue-primary);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+            border-color: var(--blue-accent);
+            transform: translateY(-8px) rotate(-1deg);
+            box-shadow: 0 12px 40px var(--shadow-medium);
         }
         
         .skill-icon {
@@ -310,19 +310,19 @@
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
             color: var(--text-primary);
+            font-weight: 600;
         }
         
         .skill-card p {
-            color: var(--text-muted);
+            color: var(--text-secondary);
             font-size: 0.95rem;
             line-height: 1.6;
         }
         
         /* Footer */
         footer {
-            background: rgba(10, 14, 39, 0.8);
-            border-top: 1px solid rgba(59, 130, 246, 0.2);
-            backdrop-filter: blur(10px);
+            background: var(--bg-secondary);
+            border-top: 2px solid var(--blue-soft);
             margin-top: 6rem;
         }
         
@@ -360,25 +360,29 @@
         
         .footer-link {
             padding: 0.75rem 1.5rem;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 10px;
-            color: var(--text-secondary);
+            background: white;
+            border: 2px solid var(--blue-light);
+            border-radius: 12px;
+            color: var(--text-primary);
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 0.95rem;
+            box-shadow: 0 4px 12px var(--shadow-soft);
         }
         
         .footer-link:hover {
-            background: rgba(59, 130, 246, 0.2);
-            color: var(--blue-light);
-            border-color: var(--blue-light);
+            background: var(--blue-soft);
+            color: var(--text-primary);
+            border-color: var(--blue-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--shadow-medium);
         }
         
         .footer-divider {
-            height: 1px;
-            background: rgba(59, 130, 246, 0.2);
+            height: 2px;
+            background: var(--blue-soft);
             margin: 2rem 0;
+            border-radius: 2px;
         }
         
         .footer-bottom {
@@ -481,19 +485,19 @@
                     <div class="skill-icon">🍰</div>
                     <h3>Sweet Mayada Cakes Redesign</h3>
                     <p>A redesign of a local business' website, focusing on targeting pain points, responsive prototyping, and code implementation.</p>
-                    <a href="work.html#project-1" style="color: var(--blue-light); text-decoration: none; margin-top: 1rem; display: inline-block;">View project →</a>
+                    <a href="work.html#project-1" style="color: var(--blue-accent); text-decoration: none; margin-top: 1rem; display: inline-block; font-weight: 500;">View project →</a>
                 </div>
                 <div class="skill-card project-card-home">
                     <div class="skill-icon">📚</div>
                     <h3>UniMelb Library Evaluation</h3>
                     <p>A research project consisting of heuristic evaluation, user testing, thematic analysis and recommendations.</p>
-                    <a href="work.html#project-2" style="color: var(--blue-light); text-decoration: none; margin-top: 1rem; display: inline-block;">View project →</a>
+                    <a href="work.html#project-2" style="color: var(--blue-accent); text-decoration: none; margin-top: 1rem; display: inline-block; font-weight: 500;">View project →</a>
                 </div>
                 <div class="skill-card project-card-home">
                     <div class="skill-icon">🤖</div>
                     <h3>AI Portfolio Builder</h3>
                     <p>A prototype for an AI resume/portfolio builder with user research, prototyping, and comprehensive user testing.</p>
-                    <a href="work.html#project-3" style="color: var(--blue-light); text-decoration: none; margin-top: 1rem; display: inline-block;">View project →</a>
+                    <a href="work.html#project-3" style="color: var(--blue-accent); text-decoration: none; margin-top: 1rem; display: inline-block; font-weight: 500;">View project →</a>
                 </div>
             </div>
         </div>
@@ -508,9 +512,9 @@
                     <p>always open to new opportunities and collaborations</p>
                 </div>
                 <div class="footer-links">
-                    <a href="https://linkedin.com/in/phamaryan" class="footer-link" target="_blank">LinkedIn</a>
-                    <a href="mailto:ryanpham29@gmail.com" class="footer-link">Email</a>
-                    <a href="https://github.com/pookiesaurus" class="footer-link" target="_blank">GitHub</a>
+                    <a href="#" class="footer-link" target="_blank">LinkedIn</a>
+                    <a href="mailto:your.email@example.com" class="footer-link">Email</a>
+                    <a href="#" class="footer-link" target="_blank">GitHub</a>
                     <a href="about.html" class="footer-link">About</a>
                 </div>
             </div>
