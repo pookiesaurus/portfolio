@@ -15,12 +15,7 @@
     margin: 3rem 0;
 }
 
-.section-title {
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    text-transform: lowercase;
-}
+/* Section title inherits from main.css - uppercase, smaller font, weight 400 */
 
 .content-text {
     font-size: 1rem;

@@ -24,7 +24,7 @@
 
 h1 {
     font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 400;
+    font-weight: 300;
     font-family: 'Noto Serif', serif;
     font-style: italic;
     line-height: 1.2;
@@ -82,7 +82,7 @@ h1 {
     font-size: 1.125rem;
     margin-bottom: 0.75rem;
     color: var(--text-primary);
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .project-card p {
