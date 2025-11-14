@@ -3,14 +3,14 @@ const track = document.getElementById('polaroidTrack');
 const container = track.parentElement;
 
 const polaroids = [
-    { caption: 'caption here' },
-    { caption: 'caption here' },
-    { caption: 'caption here' },
-    { caption: 'caption here' },
-    { caption: 'caption here' },
-    { caption: 'caption here' },
-    { caption: 'caption here' },
-    { caption: 'caption here' }
+    { caption: 'Caption Here' },
+    { caption: 'Caption Here' },
+    { caption: 'Caption Here' },
+    { caption: 'Caption Here' },
+    { caption: 'Caption Here' },
+    { caption: 'Caption Here' },
+    { caption: 'Caption Here' },
+    { caption: 'Caption Here' }
 ];
 
 // Create polaroids (no tripling, just the actual set)
