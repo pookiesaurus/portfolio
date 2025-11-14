@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Azeret+Mono:wght@400;500;600&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -25,20 +25,20 @@
             --blue-soft: #e0f2fe;
             --blue-light: #bae6fd;
             --blue-primary: #7dd3fc;
-            --blue-accent: #38bdf8;
+            --blue-accent: #0284c7;
             --pink-soft: #fce7f3;
             --pink-light: #fbcfe8;
             --purple-soft: #f3e8ff;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #475569;
             --shadow-soft: rgba(148, 163, 184, 0.1);
             --shadow-medium: rgba(148, 163, 184, 0.2);
             --gradient-y2k: linear-gradient(135deg, #bae6fd 0%, #e0e7ff 50%, #fce7f3 100%);
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
@@ -135,12 +135,13 @@
         .logo {
             font-size: 1.25rem;
             font-weight: 600;
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Azeret Mono', monospace;
             color: var(--text-primary);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            letter-spacing: -0.02em;
         }
         
         .logo-icon {
@@ -200,11 +201,13 @@
         
         h1 {
             font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 700;
-            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 400;
+            font-family: 'Newsreader', serif;
+            font-style: italic;
             line-height: 1.1;
             margin-bottom: 1.5rem;
             color: var(--text-primary);
+            letter-spacing: -0.02em;
         }
         
         .hero-subtitle {
@@ -274,9 +277,10 @@
         
         .section-title {
             font-size: clamp(2rem, 5vw, 3rem);
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             margin-bottom: 3rem;
-            font-weight: 600;
+            font-weight: 700;
+            letter-spacing: -0.03em;
         }
         
         .about-grid {
@@ -310,7 +314,9 @@
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
             color: var(--text-primary);
-            font-weight: 600;
+            font-weight: 700;
+            font-family: 'DM Sans', sans-serif;
+            letter-spacing: -0.02em;
         }
         
         .skill-card p {
