@@ -1,6 +1,11 @@
-// Infinite Polaroid Carousel
+// Bounded Polaroid Carousel with Wheel Scroll
 const track = document.getElementById('polaroidTrack');
+const container = track.parentElement;
+
 const polaroids = [
+    { caption: 'caption here' },
+    { caption: 'caption here' },
+    { caption: 'caption here' },
     { caption: 'caption here' },
     { caption: 'caption here' },
     { caption: 'caption here' },
@@ -8,10 +13,8 @@ const polaroids = [
     { caption: 'caption here' }
 ];
 
-// Triple the polaroids for smooth infinite scroll
-const tripled = [...polaroids, ...polaroids, ...polaroids];
-
-tripled.forEach(item => {
+// Create polaroids (no tripling, just the actual set)
+polaroids.forEach(item => {
     const polaroid = document.createElement('div');
     polaroid.className = 'polaroid';
     polaroid.innerHTML = `
@@ -26,40 +29,55 @@ let startX = 0;
 let scrollLeft = 0;
 let currentTranslate = 0;
 const polaroidWidth = 200 + 32; // width + gap
-const setSize = polaroids.length;
 
-// Center the middle set initially
-currentTranslate = -polaroidWidth * setSize;
-track.style.transform = `translateX(${currentTranslate}px)`;
+// Calculate boundaries
+function getBoundaries() {
+    const containerWidth = container.offsetWidth;
+    const trackWidth = track.scrollWidth;
+    const maxScroll = -(trackWidth - containerWidth);
+    return { min: maxScroll, max: 0 };
+}
 
-// Mouse events
+// Constrain translation within boundaries
+function constrainTranslate(translate) {
+    const { min, max } = getBoundaries();
+    return Math.max(min, Math.min(max, translate));
+}
+
+// Update scrollbar position
+function updateScrollbar() {
+    const { min, max } = getBoundaries();
+    const scrollPercent = max === min ? 0 : (currentTranslate - max) / (min - max);
+    const scrollbar = document.querySelector('.carousel-scrollbar-thumb');
+    if (scrollbar) {
+        const maxThumbPos = container.offsetWidth - scrollbar.offsetWidth;
+        scrollbar.style.left = (scrollPercent * maxThumbPos) + 'px';
+    }
+}
+
+// Mouse drag events
 track.addEventListener('mousedown', (e) => {
     isDragging = true;
     startX = e.pageX;
     scrollLeft = currentTranslate;
     track.classList.add('dragging');
+    e.preventDefault();
 });
 
-track.addEventListener('mousemove', (e) => {
+document.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX;
     const walk = (x - startX);
-    currentTranslate = scrollLeft + walk;
+    currentTranslate = constrainTranslate(scrollLeft + walk);
     track.style.transform = `translateX(${currentTranslate}px)`;
+    updateScrollbar();
 });
 
-track.addEventListener('mouseup', () => {
-    isDragging = false;
-    track.classList.remove('dragging');
-    checkBoundaries();
-});
-
-track.addEventListener('mouseleave', () => {
+document.addEventListener('mouseup', () => {
     if (isDragging) {
         isDragging = false;
         track.classList.remove('dragging');
-        checkBoundaries();
     }
 });
 
@@ -75,52 +93,116 @@ track.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
     const x = e.touches[0].pageX;
     const walk = (x - startX);
-    currentTranslate = scrollLeft + walk;
+    currentTranslate = constrainTranslate(scrollLeft + walk);
     track.style.transform = `translateX(${currentTranslate}px)`;
+    updateScrollbar();
 });
 
 track.addEventListener('touchend', () => {
     isDragging = false;
     track.classList.remove('dragging');
-    checkBoundaries();
 });
 
-function checkBoundaries() {
-    const maxScroll = -polaroidWidth * setSize * 2;
-    const minScroll = 0;
-    
-    // If scrolled too far right, jump to middle set
-    if (currentTranslate > minScroll) {
-        currentTranslate = -polaroidWidth * setSize;
-        track.style.transition = 'none';
-        track.style.transform = `translateX(${currentTranslate}px)`;
-        setTimeout(() => {
-            track.style.transition = 'transform 0.3s ease-out';
-        }, 10);
-    }
-    
-    // If scrolled too far left, jump to middle set
-    if (currentTranslate < maxScroll) {
-        currentTranslate = -polaroidWidth * setSize;
-        track.style.transition = 'none';
-        track.style.transform = `translateX(${currentTranslate}px)`;
-        setTimeout(() => {
-            track.style.transition = 'transform 0.3s ease-out';
-        }, 10);
-    }
-}
-
-function scrollCarousel(direction) {
-    currentTranslate += direction * polaroidWidth;
+// Wheel scroll support
+container.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    currentTranslate = constrainTranslate(currentTranslate - e.deltaY);
     track.style.transform = `translateX(${currentTranslate}px)`;
-    setTimeout(checkBoundaries, 300);
+    updateScrollbar();
+}, { passive: false });
+
+// Arrow button navigation
+function scrollCarousel(direction) {
+    currentTranslate = constrainTranslate(currentTranslate + (direction * polaroidWidth));
+    track.style.transform = `translateX(${currentTranslate}px)`;
+    updateScrollbar();
 }
 
-// Auto-scroll
-setInterval(() => {
-    if (!isDragging) {
-        currentTranslate -= polaroidWidth;
-        track.style.transform = `translateX(${currentTranslate}px)`;
-        setTimeout(checkBoundaries, 300);
+// Create and handle scrollbar
+const scrollbarTrack = document.createElement('div');
+scrollbarTrack.className = 'carousel-scrollbar-track';
+const scrollbarThumb = document.createElement('div');
+scrollbarThumb.className = 'carousel-scrollbar-thumb';
+scrollbarTrack.appendChild(scrollbarThumb);
+container.appendChild(scrollbarTrack);
+
+// Update scrollbar size based on content
+function updateScrollbarSize() {
+    const { min } = getBoundaries();
+    const containerWidth = container.offsetWidth;
+    const trackWidth = track.scrollWidth;
+    const visibleRatio = containerWidth / trackWidth;
+    const thumbWidth = Math.max(50, containerWidth * visibleRatio);
+    scrollbarThumb.style.width = thumbWidth + 'px';
+    
+    // Hide scrollbar if all content is visible
+    if (visibleRatio >= 1) {
+        scrollbarTrack.style.display = 'none';
+    } else {
+        scrollbarTrack.style.display = 'block';
     }
-}, 4000);
+}
+
+// Scrollbar drag
+let scrollbarDragging = false;
+let scrollbarStartX = 0;
+let scrollbarStartLeft = 0;
+
+scrollbarThumb.addEventListener('mousedown', (e) => {
+    scrollbarDragging = true;
+    scrollbarStartX = e.pageX;
+    scrollbarStartLeft = scrollbarThumb.offsetLeft;
+    e.stopPropagation();
+    e.preventDefault();
+});
+
+document.addEventListener('mousemove', (e) => {
+    if (!scrollbarDragging) return;
+    e.preventDefault();
+    
+    const deltaX = e.pageX - scrollbarStartX;
+    const newLeft = scrollbarStartLeft + deltaX;
+    const maxThumbPos = container.offsetWidth - scrollbarThumb.offsetWidth;
+    const constrainedLeft = Math.max(0, Math.min(maxThumbPos, newLeft));
+    
+    const scrollPercent = maxThumbPos === 0 ? 0 : constrainedLeft / maxThumbPos;
+    const { min, max } = getBoundaries();
+    currentTranslate = max + (scrollPercent * (min - max));
+    
+    track.style.transform = `translateX(${currentTranslate}px)`;
+    scrollbarThumb.style.left = constrainedLeft + 'px';
+});
+
+document.addEventListener('mouseup', () => {
+    scrollbarDragging = false;
+});
+
+// Click on scrollbar track to jump
+scrollbarTrack.addEventListener('click', (e) => {
+    if (e.target === scrollbarThumb) return;
+    
+    const rect = scrollbarTrack.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const thumbWidth = scrollbarThumb.offsetWidth;
+    const maxThumbPos = container.offsetWidth - thumbWidth;
+    const newLeft = Math.max(0, Math.min(maxThumbPos, clickX - thumbWidth / 2));
+    
+    const scrollPercent = maxThumbPos === 0 ? 0 : newLeft / maxThumbPos;
+    const { min, max } = getBoundaries();
+    currentTranslate = max + (scrollPercent * (min - max));
+    
+    track.style.transform = `translateX(${currentTranslate}px)`;
+    scrollbarThumb.style.left = newLeft + 'px';
+});
+
+// Initialize
+updateScrollbarSize();
+updateScrollbar();
+
+// Update on window resize
+window.addEventListener('resize', () => {
+    currentTranslate = constrainTranslate(currentTranslate);
+    track.style.transform = `translateX(${currentTranslate}px)`;
+    updateScrollbarSize();
+    updateScrollbar();
+});

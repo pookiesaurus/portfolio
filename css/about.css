@@ -38,7 +38,8 @@
 .polaroid-carousel {
     position: relative;
     width: 100%;
-    height: 300px;
+    height: 350px;
+    overflow: hidden;
 }
 
 .polaroid-track {
@@ -59,8 +60,13 @@
     transition: none;
 }
 
+.carousel-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
 .polaroid {
-    background: #ffffff;
+    background: white;
     padding: 0.75rem;
     padding-bottom: 2.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -186,6 +192,40 @@
 
 .carousel-nav-right {
     right: 2rem;
+}
+
+/* Scrollbar */
+.carousel-scrollbar-track {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    max-width: 600px;
+    height: 6px;
+    background: rgba(191, 219, 254, 0.3);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.carousel-scrollbar-thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--blue-400);
+    border-radius: 3px;
+    cursor: grab;
+    transition: background 0.2s ease;
+}
+
+.carousel-scrollbar-thumb:hover {
+    background: var(--blue-500);
+}
+
+.carousel-scrollbar-thumb:active {
+    cursor: grabbing;
+    background: var(--blue-600);
 }
 
 /* Skills */
