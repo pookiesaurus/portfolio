@@ -1,1 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Max Anders — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0c0d10;
+        --bg-alt: #121418;
+        --panel: #171a21;
+        --panel-alt: #1f232c;
+        --text: #f4f1ea;
+        --muted: #9ea3b2;
+        --accent: #5bc0f8;
+        --accent-strong: #2f7aff;
+        --line: rgba(255, 255, 255, 0.06);
+        --shadow: rgba(0, 0, 0, 0.4);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        line-height: 1.6;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      .grain {
+        position: fixed;
+        inset: 0;
+        background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+        opacity: 0.12;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      header,
+      main,
+      footer {
+        position: relative;
+        z-index: 1;
+      }
+
+      .page {
+        width: min(1200px, 92vw);
+        margin: 0 auto;
+        padding: 32px 0 64px;
+      }
+
+      .site-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 48px;
+      }
+
+      .logo {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 24px;
+        margin: 0;
+        padding: 0;
+        font-size: 0.95rem;
+      }
+
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      nav a:hover {
+        color: var(--accent);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 32px;
+        align-items: end;
+        margin-bottom: 96px;
+      }
+
+      .hero h1 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(2.8rem, 7vw, 4.8rem);
+        line-height: 1.1;
+        margin: 0;
+      }
+
+      .hero p {
+        max-width: 540px;
+        font-size: 1.05rem;
+        color: var(--muted);
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        border: none;
+        padding: 14px 26px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+        color: #0c111c;
+        box-shadow: 0 15px 45px rgba(91, 192, 248, 0.25);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid var(--line);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .stat-bar {
+        display: flex;
+        gap: 24px;
+        margin-top: 32px;
+        flex-wrap: wrap;
+      }
+
+      .stat {
+        flex: 1;
+        min-width: 180px;
+        padding: 16px 20px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: linear-gradient(145deg, rgba(31, 35, 44, 0.7), rgba(12, 13, 16, 0.4));
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.8rem;
+        font-family: "Space Grotesk";
+      }
+
+      section {
+        margin-bottom: 96px;
+      }
+
+      section header {
+        margin-bottom: 32px;
+      }
+
+      section h2 {
+        font-family: "Space Grotesk";
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      section p.lead {
+        max-width: 640px;
+        color: var(--muted);
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow: 0 25px 60px var(--shadow);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 32px;
+      }
+
+      .about-grid h3 {
+        font-family: "Space Grotesk";
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-size: 1rem;
+        color: var(--muted);
+      }
+
+      .about-grid p {
+        margin-top: 8px;
+        font-size: 1.05rem;
+      }
+
+      .services-grid,
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 24px;
+      }
+
+      .service-card,
+      .work-card {
+        padding: 28px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--panel-alt);
+        min-height: 220px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .service-card span {
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .service-card h3,
+      .work-card h3 {
+        font-family: "Space Grotesk";
+        margin: 0;
+        font-size: 1.25rem;
+      }
+
+      .work-card small {
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .work-card a {
+        margin-top: auto;
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .process {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+      }
+
+      .process-step {
+        padding: 24px;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: rgba(15, 17, 23, 0.7);
+        position: relative;
+      }
+
+      .process-step::before {
+        content: attr(data-step);
+        position: absolute;
+        top: -12px;
+        left: 20px;
+        font-family: "Space Grotesk";
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--bg);
+      }
+
+      .testimonials {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      blockquote {
+        margin: 0;
+        padding: 24px 32px;
+        border-left: 4px solid var(--accent);
+        border-radius: 16px;
+        background: rgba(23, 26, 33, 0.8);
+        font-size: 1.1rem;
+      }
+
+      blockquote footer {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 36px 40px;
+      }
+
+      .contact h3 {
+        margin: 0;
+        font-size: 1.6rem;
+        font-family: "Space Grotesk";
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 32px 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      footer span {
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 720px) {
+        .site-header {
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .contact {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .stat-bar {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="page">
+      <header class="site-header">
+        <div class="logo">Max Anders</div>
+        <nav aria-label="Primary">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" id="top">
+          <div>
+            <p class="kicker">Creative Technologist & Art Director</p>
+            <h1>
+              I craft masculine digital stories for brands that refuse to blend in.
+            </h1>
+          </div>
+          <div>
+            <p>
+              From boutique fashion houses to venture-backed products, I blend rigorous
+              strategy with cinematic visuals. The result: precise, moody experiences that
+              feel tactile, modern, and unmistakably masculine.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#work">See Work</a>
+              <a class="btn btn-secondary" href="#contact">Book Intro Call</a>
+            </div>
+            <div class="stat-bar">
+              <div class="stat">
+                <strong>10+</strong>
+                Years delivering digital flagships
+              </div>
+              <div class="stat">
+                <strong>$85M</strong>
+                Client revenue influenced
+              </div>
+              <div class="stat">
+                <strong>27</strong>
+                Products launched worldwide
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about">
+          <header>
+            <h2>Profile</h2>
+            <p class="lead">
+              I work at the intersection of brand systems, experience design, and emerging
+              tech — helping founders and creative leads express a sharper point of view.
+            </p>
+          </header>
+          <div class="panel about-grid">
+            <div>
+              <h3>Discipline</h3>
+              <p>Creative Direction, Product Design, Design Systems, Webflow engineering.</p>
+            </div>
+            <div>
+              <h3>Approach</h3>
+              <p>Research-driven strategy, masculine palettes, rich textures, editorial typography.</p>
+            </div>
+            <div>
+              <h3>Based In</h3>
+              <p>Brooklyn, New York — partnering with teams worldwide.</p>
+            </div>
+            <div>
+              <h3>Availability</h3>
+              <p>Taking on two new collaborations for Q1 2026.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="services">
+          <header>
+            <h2>Capabilities</h2>
+            <p class="lead">
+              Precision across strategy, aesthetics, and build — so the final product feels as
+              intentional as the story behind it.
+            </p>
+          </header>
+          <div class="services-grid">
+            <article class="service-card">
+              <span>01</span>
+              <h3>Brand Systems</h3>
+              <p>Identity refinement, tonal palettes, typographic systems, and guidelines for internal teams.</p>
+            </article>
+            <article class="service-card">
+              <span>02</span>
+              <h3>Experience Design</h3>
+              <p>UX architecture, content choreography, motion direction, and responsive buildouts.</p>
+            </article>
+            <article class="service-card">
+              <span>03</span>
+              <h3>Product Strategy</h3>
+              <p>Vision decks, positioning, and launch strategy to bring venture-backed products to market.</p>
+            </article>
+            <article class="service-card">
+              <span>04</span>
+              <h3>Advisory</h3>
+              <p>Creative leadership for in-house teams needing a sharp outside perspective.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="work">
+          <header>
+            <h2>Selected Work</h2>
+            <p class="lead">
+              Sharp, moody executions for clients in fashion, wellness, fintech, and luxury travel.
+            </p>
+          </header>
+          <div class="work-grid">
+            <article class="work-card">
+              <small>01 — Editorial Commerce</small>
+              <h3>Huntington Atelier</h3>
+              <p>Rebuilt a bespoke tailoring house with a cinematic WebGL experience and monochrome palette.</p>
+              <a href="#">View Case Study →</a>
+            </article>
+            <article class="work-card">
+              <small>02 — Venture Platform</small>
+              <h3>Forge Labs</h3>
+              <p>Defined product story, UI kit, and investor narrative for an AI-driven materials lab.</p>
+              <a href="#">View Case Study →</a>
+            </article>
+            <article class="work-card">
+              <small>03 — Luxury Hospitality</small>
+              <h3>North+Bound</h3>
+              <p>Launched a boutique hospitality brand with a moody booking experience and cohesive copy.</p>
+              <a href="#">View Case Study →</a>
+            </article>
+            <article class="work-card">
+              <small>04 — Wellness Collective</small>
+              <h3>Ritual Strength</h3>
+              <p>Full identity, content system, and e-comm experience for a hybrid strength studio.</p>
+              <a href="#">View Case Study →</a>
+            </article>
+          </div>
+        </section>
+
+        <section id="process">
+          <header>
+            <h2>Process</h2>
+            <p class="lead">
+              A transparent, collaborative cadence that keeps craftsmanship high and surprises low.
+            </p>
+          </header>
+          <div class="process">
+            <div class="process-step" data-step="Phase 01">
+              <h3>Alignment</h3>
+              <p>Stakeholder interviews, analog mood boarding, and technical audits to sharpen the brief.</p>
+            </div>
+            <div class="process-step" data-step="Phase 02">
+              <h3>Exploration</h3>
+              <p>Concept sprints, typography studies, color exploration, interaction sketches, and prototypes.</p>
+            </div>
+            <div class="process-step" data-step="Phase 03">
+              <h3>Build</h3>
+              <p>High-fidelity design, animation systems, front-end development, QA, and documentation.</p>
+            </div>
+            <div class="process-step" data-step="Phase 04">
+              <h3>Launch</h3>
+              <p>Deployment support, analytics instrumentation, and creative direction for the first campaigns.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="testimonials">
+          <header>
+            <h2>Notes From Partners</h2>
+            <p class="lead">Trusted by founders, CMOs, and creative directors building bold brands.</p>
+          </header>
+          <div class="testimonials">
+            <blockquote>
+              “Max translates high-level ambition into visceral experiences. Every deliverable feels like it
+              belongs in a campaign film.”
+              <footer>Caleb Hart — Creative Director, Huntington Atelier</footer>
+            </blockquote>
+            <blockquote>
+              “He’s the rare blend of strategist and builder. We launched within eight weeks and raised our seed
+              round with the new story.”
+              <footer>Sienna Lowe — CEO, Forge Labs</footer>
+            </blockquote>
+          </div>
+        </section>
+
+        <section id="contact">
+          <div class="panel contact">
+            <div>
+              <h3>Ready to make it unmistakable?</h3>
+              <p>
+                Send a note to <a href="mailto:hello@maxanders.studio">hello@maxanders.studio</a> or drop a message
+                below. I typically respond within 48 hours.
+              </p>
+            </div>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="mailto:hello@maxanders.studio">Email Directly</a>
+              <a class="btn btn-secondary" href="#top">Back to Top</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="site-header" style="border-bottom: none; margin-bottom: 0; padding: 0">
+          <span>Max Anders Studio</span>
+          <p>© <span id="year"></span> Crafted between Brooklyn & Stockholm.</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
 
