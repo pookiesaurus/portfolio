@@ -3,50 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hey! i'm ryan ✦</title>
+    <title>ryan pham</title>
     <meta name="description" content="cs + ux student at unimelb, melbourne">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Azeret+Mono:wght@400;500;600&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.gstatic.com/s/geist/v4/gyByhwUxId8gMEwcGFU.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
     
     <style>
+        @font-face {
+            font-family: 'Geist';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/geist/v4/gyByhwUxId8gMEwcGFU.woff2) format('woff2');
+        }
+        @font-face {
+            font-family: 'Geist';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/geist/v4/gyByhwUxId8gMEwcGFU.woff2) format('woff2');
+        }
+        @font-face {
+            font-family: 'Geist';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/geist/v4/gyByhwUxId8gMEwcGFU.woff2) format('woff2');
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: none;
         }
         
         :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9ff;
-            --bg-card: #fefeff;
-            --blue-soft: #e0f2fe;
-            --blue-light: #bae6fd;
-            --blue-primary: #7dd3fc;
-            --blue-accent: #0284c7;
-            --pink-soft: #fce7f3;
-            --pink-light: #fbcfe8;
-            --purple-soft: #f3e8ff;
+            --bg-primary: #fafaf8;
+            --blue-100: #dbeafe;
+            --blue-200: #bfdbfe;
+            --blue-300: #93c5fd;
+            --blue-400: #60a5fa;
+            --blue-500: #3b82f6;
+            --blue-600: #2563eb;
             --text-primary: #0f172a;
-            --text-secondary: #334155;
-            --text-muted: #475569;
-            --shadow-soft: rgba(148, 163, 184, 0.1);
-            --shadow-medium: rgba(148, 163, 184, 0.2);
-            --gradient-y2k: linear-gradient(135deg, #bae6fd 0%, #e0e7ff 50%, #fce7f3 100%);
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
         }
         
         body {
-            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
         }
         
-        /* Soft gradient background */
-        .background-gradient {
+        /* Custom Cursor */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--blue-400);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease, background 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: white;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .custom-cursor.hover-project {
+            width: 120px;
+            height: 40px;
+            border-radius: 20px;
+            background: var(--blue-500);
+            border-color: var(--blue-500);
+        }
+        
+        /* ASCII Text Art Background */
+        .background-graphics {
             position: fixed;
             top: 0;
             left: 0;
@@ -54,55 +99,36 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
-            background: var(--gradient-y2k);
-            opacity: 0.3;
-        }
-        
-        .gradient-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
+            pointer-events: none;
+            font-family: 'Courier New', monospace;
+            color: var(--blue-200);
             opacity: 0.4;
-            animation: float 25s infinite ease-in-out;
         }
         
-        .blob-1 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, #bae6fd, transparent);
-            top: -300px;
-            right: -200px;
-            animation-delay: 0s;
+        .ascii-art {
+            position: absolute;
+            white-space: pre;
+            font-size: 12px;
+            line-height: 1;
+            user-select: none;
         }
         
-        .blob-2 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, #fce7f3, transparent);
-            bottom: -200px;
-            left: -150px;
-            animation-delay: 10s;
+        .ascii-art:nth-child(1) {
+            top: 15%;
+            right: 10%;
+            transform: rotate(15deg);
         }
         
-        .blob-3 {
-            width: 550px;
-            height: 550px;
-            background: radial-gradient(circle, #e0e7ff, transparent);
-            top: 40%;
-            left: 60%;
-            animation-delay: 15s;
+        .ascii-art:nth-child(2) {
+            bottom: 20%;
+            left: 8%;
+            transform: rotate(-12deg);
         }
         
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            33% {
-                transform: translate(80px, -80px) scale(1.05);
-            }
-            66% {
-                transform: translate(-40px, 80px) scale(0.95);
-            }
+        .ascii-art:nth-child(3) {
+            top: 50%;
+            right: 15%;
+            transform: rotate(8deg);
         }
         
         .container {
@@ -116,14 +142,12 @@
         /* Header */
         header {
             padding: 2rem 0;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid var(--blue-soft);
-            box-shadow: 0 4px 20px var(--shadow-soft);
+            border-bottom: 1px solid var(--blue-200);
         }
         
         nav {
@@ -133,27 +157,27 @@
         }
         
         .logo {
-            font-size: 1.25rem;
-            font-weight: 600;
-            font-family: 'Azeret Mono', monospace;
+            font-size: 1rem;
+            font-weight: 500;
+            font-family: 'Geist', sans-serif;
             color: var(--text-primary);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            letter-spacing: -0.02em;
         }
         
         .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--blue-primary), var(--pink-light));
-            border-radius: 12px;
+            width: 28px;
+            height: 28px;
+            background: var(--blue-400);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            box-shadow: 0 4px 16px var(--shadow-medium);
+            font-weight: 500;
+            color: white;
+            font-size: 0.75rem;
         }
         
         nav ul {
@@ -165,67 +189,62 @@
         nav a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 400;
             transition: color 0.3s ease;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
         
         nav a:hover {
-            color: var(--blue-accent);
+            color: var(--blue-500);
         }
         
         /* Hero Section */
         .hero {
-            min-height: 90vh;
+            min-height: 80vh;
             display: flex;
             align-items: center;
             padding: 4rem 0;
         }
         
         .hero-content {
-            max-width: 800px;
+            max-width: 700px;
         }
         
         .hero-tag {
             display: inline-block;
-            padding: 0.5rem 1.25rem;
-            background: var(--blue-soft);
-            border: 2px solid var(--blue-light);
-            border-radius: 50px;
+            padding: 0.4rem 1rem;
+            background: var(--blue-100);
+            border-radius: 20px;
             color: var(--text-primary);
-            font-size: 0.875rem;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: 400;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 12px var(--shadow-soft);
         }
         
         h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 400;
-            font-family: 'Newsreader', serif;
+            font-family: 'Noto Serif', serif;
             font-style: italic;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 1rem;
         }
         
         .hero-subtitle {
-            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-size: 1.125rem;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-weight: 300;
         }
         
         .hero-description {
-            font-size: 1.125rem;
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-            line-height: 1.8;
-            max-width: 600px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            font-weight: 300;
         }
         
-        /* Buttons */
         .button-group {
             display: flex;
             gap: 1rem;
@@ -233,107 +252,99 @@
         }
         
         .btn {
-            padding: 0.875rem 2rem;
-            border-radius: 12px;
+            padding: 0.75rem 1.75rem;
+            border-radius: 25px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 400;
             transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1rem;
-            cursor: pointer;
-            border: none;
+            font-size: 0.9rem;
         }
         
         .btn-primary {
-            background: var(--blue-accent);
+            background: var(--blue-500);
             color: white;
-            box-shadow: 0 4px 20px var(--shadow-medium);
         }
         
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px var(--shadow-medium);
-            background: var(--blue-primary);
+            background: var(--blue-600);
         }
         
         .btn-secondary {
-            background: var(--bg-card);
+            background: white;
             color: var(--text-primary);
-            border: 2px solid var(--blue-light);
-            box-shadow: 0 4px 12px var(--shadow-soft);
+            border: 1px solid var(--blue-300);
         }
         
         .btn-secondary:hover {
-            background: var(--blue-soft);
-            border-color: var(--blue-accent);
+            border-color: var(--blue-500);
         }
         
-        /* About Section */
-        .about {
-            padding: 6rem 0;
+        /* Featured Projects */
+        .projects {
+            padding: 4rem 0;
         }
         
         .section-title {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-family: 'DM Sans', sans-serif;
-            margin-bottom: 3rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
+            font-size: 1.5rem;
+            font-family: 'Geist', sans-serif;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            text-transform: lowercase;
         }
         
-        .about-grid {
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
         
-        .skill-card {
-            background: var(--bg-card);
-            border: 2px solid var(--blue-soft);
-            border-radius: 20px;
+        .project-card {
+            background: white;
+            border: 1px solid var(--blue-200);
+            border-radius: 12px;
             padding: 2rem;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 24px var(--shadow-soft);
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
         
-        .skill-card:hover {
-            border-color: var(--blue-accent);
-            transform: translateY(-8px) rotate(-1deg);
-            box-shadow: 0 12px 40px var(--shadow-medium);
+        .project-card:hover {
+            border-color: var(--blue-400);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);
+            transform: translateY(-4px);
         }
         
-        .skill-icon {
-            font-size: 2.5rem;
+        .project-icon {
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
         
-        .skill-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
+        .project-card h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
             color: var(--text-primary);
-            font-weight: 700;
-            font-family: 'DM Sans', sans-serif;
-            letter-spacing: -0.02em;
+            font-weight: 500;
         }
         
-        .skill-card p {
+        .project-card p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.6;
+            font-weight: 300;
         }
         
         /* Footer */
         footer {
-            background: var(--bg-secondary);
-            border-top: 2px solid var(--blue-soft);
+            background: white;
+            border-top: 1px solid var(--blue-200);
             margin-top: 6rem;
         }
         
         .footer-content {
-            padding: 4rem 2rem 2rem;
+            padding: 3rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -343,19 +354,20 @@
             justify-content: space-between;
             align-items: flex-start;
             flex-wrap: wrap;
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
         
         .footer-text h3 {
-            font-size: 1.75rem;
+            font-size: 1.25rem;
             margin-bottom: 0.5rem;
-            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 500;
         }
         
         .footer-text p {
             color: var(--text-muted);
-            font-style: italic;
+            font-size: 0.9rem;
+            font-weight: 300;
         }
         
         .footer-links {
@@ -365,59 +377,41 @@
         }
         
         .footer-link {
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.25rem;
             background: white;
-            border: 2px solid var(--blue-light);
-            border-radius: 12px;
+            border: 1px solid var(--blue-300);
+            border-radius: 20px;
             color: var(--text-primary);
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 12px var(--shadow-soft);
+            font-size: 0.85rem;
+            font-weight: 400;
         }
         
         .footer-link:hover {
-            background: var(--blue-soft);
-            color: var(--text-primary);
-            border-color: var(--blue-accent);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px var(--shadow-medium);
+            background: var(--blue-500);
+            color: white;
+            border-color: var(--blue-500);
         }
         
         .footer-divider {
-            height: 2px;
-            background: var(--blue-soft);
+            height: 1px;
+            background: var(--blue-200);
             margin: 2rem 0;
-            border-radius: 2px;
         }
         
         .footer-bottom {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
             color: var(--text-muted);
-            font-size: 0.875rem;
+            font-size: 0.8rem;
+            font-weight: 300;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-            }
-            
-            .hero {
-                min-height: 80vh;
-            }
-            
-            .button-group {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
             
             .footer-main {
@@ -426,28 +420,41 @@
             
             .footer-bottom {
                 flex-direction: column;
-                text-align: center;
+                gap: 0.5rem;
             }
         }
         
-        /* Smooth scroll */
         html {
             scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <!-- Animated background -->
-    <div class="background-gradient">
-        <div class="gradient-blob blob-1"></div>
-        <div class="gradient-blob blob-2"></div>
-        <div class="gradient-blob blob-3"></div>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="cursor"></div>
+    
+    <!-- ASCII Background -->
+    <div class="background-graphics">
+        <div class="ascii-art">    *    
+   ***   
+  *****  
+ ******* 
+*********</div>
+        <div class="ascii-art">  { }
+ /   \
+|  *  |
+ \   /
+  { }</div>
+        <div class="ascii-art">  < />
+ <   >
+  <>
+ <   ></div>
     </div>
     
     <!-- Header -->
     <header>
         <nav class="container">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <div class="logo-icon">RP</div>
                 ryan pham
             </a>
@@ -463,48 +470,41 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-tag">✦ available for internships</div>
+                <div class="hero-tag">available for internships</div>
                 <h1>hey! i'm ryan</h1>
                 <p class="hero-subtitle">cs + ux student at unimelb</p>
                 <p class="hero-description">
-                    I'm a university student passionate about crafting accessible and sustainable solutions to design problems. 
-                    Currently exploring the intersection of computer science and user experience in melbourne.
+                    i'm a university student passionate about crafting accessible and sustainable solutions to design problems. 
+                    currently exploring the intersection of computer science and user experience in melbourne.
                 </p>
                 <div class="button-group">
-                    <a href="work.html" class="btn btn-primary">
-                        view my work →
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        get in touch
-                    </a>
+                    <a href="work.html" class="btn btn-primary">view my work</a>
+                    <a href="about.html" class="btn btn-secondary">more about me</a>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Featured Projects Section -->
-    <section class="about" id="work">
+    <!-- Featured Projects -->
+    <section class="projects">
         <div class="container">
             <h2 class="section-title">featured projects</h2>
-            <div class="about-grid">
-                <div class="skill-card project-card-home">
-                    <div class="skill-icon">🍰</div>
-                    <h3>Sweet Mayada Cakes Redesign</h3>
-                    <p>A redesign of a local business' website, focusing on targeting pain points, responsive prototyping, and code implementation.</p>
-                    <a href="work.html#project-1" style="color: var(--blue-accent); text-decoration: none; margin-top: 1rem; display: inline-block; font-weight: 500;">View project →</a>
-                </div>
-                <div class="skill-card project-card-home">
-                    <div class="skill-icon">📚</div>
-                    <h3>UniMelb Library Evaluation</h3>
-                    <p>A research project consisting of heuristic evaluation, user testing, thematic analysis and recommendations.</p>
-                    <a href="work.html#project-2" style="color: var(--blue-accent); text-decoration: none; margin-top: 1rem; display: inline-block; font-weight: 500;">View project →</a>
-                </div>
-                <div class="skill-card project-card-home">
-                    <div class="skill-icon">🤖</div>
-                    <h3>AI Portfolio Builder</h3>
-                    <p>A prototype for an AI resume/portfolio builder with user research, prototyping, and comprehensive user testing.</p>
-                    <a href="work.html#project-3" style="color: var(--blue-accent); text-decoration: none; margin-top: 1rem; display: inline-block; font-weight: 500;">View project →</a>
-                </div>
+            <div class="projects-grid">
+                <a href="project-1.html" class="project-card" data-cursor="project">
+                    <div class="project-icon">🍰</div>
+                    <h3>sweet mayada cakes redesign</h3>
+                    <p>a redesign of a local business' website, focusing on targeting pain points, responsive prototyping, and code implementation.</p>
+                </a>
+                <a href="project-2.html" class="project-card" data-cursor="project">
+                    <div class="project-icon">📚</div>
+                    <h3>unimelb library evaluation</h3>
+                    <p>a research project consisting of heuristic evaluation, user testing, thematic analysis and recommendations.</p>
+                </a>
+                <a href="project-3.html" class="project-card" data-cursor="project">
+                    <div class="project-icon">🤖</div>
+                    <h3>ai portfolio builder</h3>
+                    <p>a prototype for an ai resume/portfolio builder with user research, prototyping, and comprehensive user testing.</p>
+                </a>
             </div>
         </div>
     </section>
@@ -514,22 +514,61 @@
         <div class="footer-content">
             <div class="footer-main">
                 <div class="footer-text">
-                    <h3>let's connect! ✦</h3>
+                    <h3>let's connect</h3>
                     <p>always open to new opportunities and collaborations</p>
                 </div>
                 <div class="footer-links">
-                    <a href="#" class="footer-link" target="_blank">LinkedIn</a>
-                    <a href="mailto:your.email@example.com" class="footer-link">Email</a>
-                    <a href="#" class="footer-link" target="_blank">GitHub</a>
-                    <a href="about.html" class="footer-link">About</a>
+                    <a href="#" class="footer-link">linkedin</a>
+                    <a href="mailto:your.email@example.com" class="footer-link">email</a>
+                    <a href="#" class="footer-link">github</a>
+                    <a href="about.html" class="footer-link">about</a>
                 </div>
             </div>
             <div class="footer-divider"></div>
             <div class="footer-bottom">
-                <p>built with html + css • typeset in inter & space grotesk</p>
-                <p>© 2025 ryan pham → cs/ux @ unimelb</p>
+                <p>built with html + css</p>
+                <p>© 2025 ryan pham — cs/ux @ unimelb</p>
             </div>
         </div>
     </footer>
+    
+    <script>
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        function animateCursor() {
+            const speed = 0.15;
+            cursorX += (mouseX - cursorX) * speed;
+            cursorY += (mouseY - cursorY) * speed;
+            
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+        
+        // Project hover
+        const projectCards = document.querySelectorAll('[data-cursor="project"]');
+        projectCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover-project');
+                cursor.textContent = 'see project →';
+            });
+            card.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover-project');
+                cursor.textContent = '';
+            });
+        });
+    </script>
 </body>
 </html>
