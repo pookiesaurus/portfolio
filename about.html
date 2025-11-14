@@ -42,17 +42,16 @@
         }
         
         :root {
-            --bg-primary: #fafafa;
-            --bg-secondary: #f0f4ff;
-            --bg-card: #ffffff;
-            --blue-y2k: #00d4ff;
-            --pink-y2k: #ff69b4;
-            --purple-y2k: #b19cd9;
-            --yellow-y2k: #ffeb3b;
+            --bg-primary: #fafaf8;
+            --blue-100: #dbeafe;
+            --blue-200: #bfdbfe;
+            --blue-300: #93c5fd;
+            --blue-400: #60a5fa;
+            --blue-500: #3b82f6;
+            --blue-600: #2563eb;
             --text-primary: #0f172a;
-            --text-secondary: #334155;
-            --text-muted: #475569;
-            --shadow: rgba(0, 0, 0, 0.1);
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
         }
         
         body {
@@ -64,7 +63,7 @@
             position: relative;
         }
         
-        /* Y2K Text Graphics Background */
+        /* ASCII Text Art Background */
         .background-graphics {
             position: fixed;
             top: 0;
@@ -74,47 +73,41 @@
             z-index: -1;
             overflow: hidden;
             pointer-events: none;
+            font-family: 'Courier New', monospace;
+            color: var(--blue-200);
+            opacity: 0.4;
         }
         
-        .text-graphic {
+        .ascii-art {
             position: absolute;
-            font-family: 'Geist', sans-serif;
-            font-weight: 700;
-            opacity: 0.03;
+            white-space: pre;
+            font-size: 12px;
+            line-height: 1;
             user-select: none;
-            white-space: nowrap;
         }
         
-        .text-graphic:nth-child(1) {
-            font-size: 8rem;
+        .ascii-art:nth-child(1) {
             top: 10%;
-            right: -5%;
-            color: var(--blue-y2k);
-            transform: rotate(-15deg);
+            right: 5%;
+            transform: rotate(15deg);
         }
         
-        .text-graphic:nth-child(2) {
-            font-size: 6rem;
-            bottom: 20%;
-            left: -3%;
-            color: var(--pink-y2k);
-            transform: rotate(12deg);
+        .ascii-art:nth-child(2) {
+            bottom: 15%;
+            left: 8%;
+            transform: rotate(-12deg);
         }
         
-        .text-graphic:nth-child(3) {
-            font-size: 10rem;
-            top: 50%;
-            left: 50%;
-            color: var(--purple-y2k);
-            transform: translate(-50%, -50%) rotate(-8deg);
+        .ascii-art:nth-child(3) {
+            top: 45%;
+            left: 3%;
+            transform: rotate(8deg);
         }
         
-        .text-graphic:nth-child(4) {
-            font-size: 5rem;
-            top: 5%;
-            left: 10%;
-            color: var(--yellow-y2k);
-            transform: rotate(25deg);
+        .ascii-art:nth-child(4) {
+            top: 25%;
+            left: 45%;
+            transform: rotate(-5deg);
         }
         
         .container {
@@ -128,12 +121,12 @@
         /* Header */
         header {
             padding: 2rem 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(250, 250, 248, 0.95);
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 2px solid var(--blue-y2k);
+            border-bottom: 1px solid var(--blue-200);
         }
         
         nav {
@@ -143,7 +136,7 @@
         }
         
         .logo {
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 500;
             font-family: 'Geist', sans-serif;
             color: var(--text-primary);
@@ -154,15 +147,16 @@
         }
         
         .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--blue-y2k), var(--pink-y2k));
+            width: 28px;
+            height: 28px;
+            background: var(--blue-400);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
+            font-weight: 500;
             color: white;
+            font-size: 0.75rem;
         }
         
         nav ul {
@@ -174,13 +168,13 @@
         nav a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 400;
             transition: color 0.3s ease;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
         
         nav a:hover {
-            color: var(--blue-y2k);
+            color: var(--blue-500);
         }
         
         /* Main Content */
@@ -190,21 +184,21 @@
         
         .page-header {
             margin-bottom: 4rem;
-            text-align: center;
         }
         
         .page-title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             font-family: 'Noto Serif', serif;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: var(--text-primary);
             font-weight: 400;
             font-style: italic;
         }
         
         .page-subtitle {
-            font-size: 1.25rem;
+            font-size: 1rem;
             color: var(--text-secondary);
+            font-weight: 300;
         }
         
         .about-section {
@@ -212,19 +206,21 @@
         }
         
         .section-title {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-family: 'Geist', sans-serif;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             color: var(--text-primary);
             font-weight: 500;
+            text-transform: lowercase;
         }
         
         .bio-text {
-            font-size: 1.125rem;
+            font-size: 1rem;
             line-height: 1.8;
             color: var(--text-secondary);
-            max-width: 800px;
-            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
         }
         
         /* Infinite Polaroid Carousel */
@@ -238,48 +234,60 @@
             margin-right: -50vw;
             overflow: hidden;
             padding: 3rem 0;
-            background: linear-gradient(180deg, transparent, rgba(0, 212, 255, 0.05), transparent);
+            background: linear-gradient(180deg, transparent, rgba(59, 130, 246, 0.03), transparent);
         }
         
         .polaroid-carousel {
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 300px;
         }
         
         .polaroid-track {
             display: flex;
-            gap: 3rem;
+            gap: 2rem;
             position: absolute;
             cursor: grab;
             user-select: none;
-            padding: 0 2rem;
+            will-change: transform;
+            transition: transform 0.3s ease-out;
         }
         
         .polaroid-track:active {
             cursor: grabbing;
         }
         
+        .polaroid-track.dragging {
+            transition: none;
+        }
+        
         .polaroid {
             background: #ffffff;
-            padding: 1.2rem;
-            padding-bottom: 4rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15),
-                        0 2px 8px rgba(0, 0, 0, 0.08);
+            padding: 0.75rem;
+            padding-bottom: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1),
+                        0 1px 3px rgba(0, 0, 0, 0.08);
             position: relative;
             flex-shrink: 0;
-            width: 280px;
+            width: 200px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         /* Realistic Polaroid angles */
-        .polaroid:nth-child(odd) { transform: rotate(-3deg); }
-        .polaroid:nth-child(even) { transform: rotate(2deg); }
-        .polaroid:nth-child(3n) { transform: rotate(-1deg); }
+        .polaroid:nth-child(10n+1) { transform: rotate(-4deg); }
+        .polaroid:nth-child(10n+2) { transform: rotate(3deg); }
+        .polaroid:nth-child(10n+3) { transform: rotate(-2deg); }
+        .polaroid:nth-child(10n+4) { transform: rotate(5deg); }
+        .polaroid:nth-child(10n+5) { transform: rotate(-3deg); }
+        .polaroid:nth-child(10n+6) { transform: rotate(2deg); }
+        .polaroid:nth-child(10n+7) { transform: rotate(-5deg); }
+        .polaroid:nth-child(10n+8) { transform: rotate(4deg); }
+        .polaroid:nth-child(10n+9) { transform: rotate(-1deg); }
+        .polaroid:nth-child(10n+10) { transform: rotate(3deg); }
         
         .polaroid:hover {
             transform: rotate(0deg) scale(1.05) !important;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
             z-index: 10;
         }
         
@@ -298,13 +306,6 @@
                     transparent 2px,
                     rgba(0, 0, 0, 0.01) 2px,
                     rgba(0, 0, 0, 0.01) 4px
-                ),
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(0, 0, 0, 0.01) 2px,
-                    rgba(0, 0, 0, 0.01) 4px
                 );
             pointer-events: none;
         }
@@ -313,29 +314,28 @@
         .polaroid::after {
             content: '';
             position: absolute;
-            top: -8px;
+            top: -6px;
             left: 50%;
             transform: translateX(-50%) rotate(-2deg);
-            width: 90px;
-            height: 30px;
+            width: 70px;
+            height: 22px;
             background: rgba(255, 255, 255, 0.6);
             border: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1),
-                        inset 0 1px 3px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1),
+                        inset 0 1px 2px rgba(255, 255, 255, 0.8);
         }
         
         .polaroid-image {
             width: 100%;
             aspect-ratio: 1;
-            background: linear-gradient(135deg, #e0f2fe 0%, #fce7f3 100%);
+            background: var(--blue-100);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         /* Photo film texture */
@@ -350,21 +350,21 @@
                 rgba(255, 255, 255, 0.3) 0%, 
                 transparent 40%,
                 transparent 60%,
-                rgba(0, 0, 0, 0.05) 100%);
+                rgba(0, 0, 0, 0.03) 100%);
         }
         
         .polaroid-caption {
             position: absolute;
-            bottom: 0.5rem;
-            left: 1.2rem;
-            right: 1.2rem;
+            bottom: 0.3rem;
+            left: 0.75rem;
+            right: 0.75rem;
             text-align: center;
             font-family: 'Noto Serif', serif;
-            font-size: 0.95rem;
+            font-size: 0.75rem;
             color: var(--text-primary);
             font-style: italic;
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(5px);
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
         
@@ -378,24 +378,26 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             background: white;
-            border: 2px solid var(--blue-y2k);
+            border: 1px solid var(--blue-300);
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             z-index: 10;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.2rem;
+            color: var(--blue-500);
         }
         
         .carousel-nav:hover {
-            background: var(--blue-y2k);
+            background: var(--blue-500);
             color: white;
-            transform: translateY(-50%) scale(1.1);
+            border-color: var(--blue-500);
         }
         
         .carousel-nav-left {
@@ -410,26 +412,26 @@
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
         
         .skill-category {
-            background: var(--bg-card);
-            border: 2px solid var(--blue-y2k);
-            border-radius: 12px;
-            padding: 2rem;
+            background: white;
+            border: 1px solid var(--blue-200);
+            border-radius: 8px;
+            padding: 1.5rem;
             transition: all 0.3s ease;
         }
         
         .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+            border-color: var(--blue-400);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
         }
         
         .skill-category h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
             color: var(--text-primary);
             font-family: 'Geist', sans-serif;
             font-weight: 500;
@@ -438,62 +440,66 @@
         .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
         
         .skill-tag {
-            padding: 0.5rem 1rem;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid var(--blue-y2k);
-            border-radius: 20px;
+            padding: 0.4rem 0.8rem;
+            background: var(--blue-100);
+            border-radius: 15px;
             color: var(--text-primary);
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.8rem;
+            font-weight: 400;
         }
         
         /* Social Links */
         .social-section {
             margin-top: 4rem;
-            text-align: center;
         }
         
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
         
         .social-link {
-            padding: 1rem 2rem;
+            padding: 0.75rem 1.5rem;
             background: white;
-            border: 2px solid var(--pink-y2k);
-            border-radius: 25px;
+            border: 1px solid var(--blue-300);
+            border-radius: 20px;
             color: var(--text-primary);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 400;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
         }
         
         .social-link:hover {
-            background: var(--pink-y2k);
+            background: var(--blue-500);
             color: white;
-            transform: translateY(-3px);
+            border-color: var(--blue-500);
         }
         
         /* Footer */
         footer {
-            background: var(--bg-secondary);
-            border-top: 2px solid var(--blue-y2k);
+            background: white;
+            border-top: 1px solid var(--blue-200);
             margin-top: 6rem;
-            padding: 3rem 2rem;
+            padding: 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
             text-align: center;
         }
         
         .footer-text {
             color: var(--text-muted);
-            font-size: 0.875rem;
+            font-size: 0.8rem;
+            font-weight: 300;
         }
         
         /* Responsive */
@@ -507,8 +513,9 @@
             }
             
             .carousel-nav {
-                width: 40px;
-                height: 40px;
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
             }
             
             .carousel-nav-left {
@@ -520,7 +527,7 @@
             }
             
             .polaroid {
-                width: 240px;
+                width: 180px;
             }
         }
         
@@ -530,12 +537,32 @@
     </style>
 </head>
 <body>
-    <!-- Y2K Text Graphics Background -->
+    <!-- ASCII Text Art Background -->
     <div class="background-graphics">
-        <div class="text-graphic">DESIGN</div>
-        <div class="text-graphic">CODE</div>
-        <div class="text-graphic">UX</div>
-        <div class="text-graphic">CREATE</div>
+        <div class="ascii-art">    *    
+   ***   
+  *****  
+ ******* 
+*********
+ ******* 
+  *****  
+   ***   
+    *    </div>
+        <div class="ascii-art">  { }
+ /   \
+|  *  |
+ \   /
+  { }</div>
+        <div class="ascii-art">  < />
+ <   >
+  <>
+ <   >
+  < /></div>
+        <div class="ascii-art">  + +
+ +++++
++ + + +
+ +++++
+  + +</div>
     </div>
     
     <!-- Header -->
@@ -558,21 +585,21 @@
         <div class="container">
             <!-- Page Header -->
             <div class="page-header">
-                <h1 class="page-title">about me ✨</h1>
-                <p class="page-subtitle">Currently studying UX design and CS at UniMelb</p>
+                <h1 class="page-title">about me</h1>
+                <p class="page-subtitle">currently studying ux design and cs at unimelb</p>
             </div>
             
             <!-- Bio Section -->
             <div class="about-section">
                 <h2 class="section-title">who i am</h2>
                 <p class="bio-text">
-                    I'm a university student passionate about crafting accessible and sustainable solutions to design problems. 
-                    Currently studying Computer Science and UX Design at the University of Melbourne, I'm exploring the intersection 
+                    i'm a university student passionate about crafting accessible and sustainable solutions to design problems. 
+                    currently studying computer science and ux design at the university of melbourne, i'm exploring the intersection 
                     of technology and human-centered design.
                 </p>
                 <p class="bio-text">
-                    My approach combines technical skills in software development with a deep understanding of user needs and behaviors. 
-                    I believe that great design should be both beautiful and functional, accessible to all users, and built with 
+                    my approach combines technical skills in software development with a deep understanding of user needs and behaviors. 
+                    i believe that great design should be both beautiful and functional, accessible to all users, and built with 
                     sustainability in mind.
                 </p>
             </div>
@@ -580,55 +607,12 @@
         
         <!-- Polaroid Carousel (Full Width) -->
         <div class="polaroid-section">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;">things i love 💙</h2>
+            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">things i love</h2>
             <div class="polaroid-carousel">
                 <div class="carousel-nav carousel-nav-left" onclick="scrollCarousel(-1)">←</div>
                 <div class="carousel-nav carousel-nav-right" onclick="scrollCarousel(1)">→</div>
                 
-                <div class="polaroid-track" id="polaroidTrack">
-                    <!-- Duplicated for infinite scroll -->
-                    <div class="polaroid">
-                        <div class="polaroid-image">[image placeholder]</div>
-                        <div class="polaroid-caption">caption here</div>
-                    </div>
-                    <div class="polaroid">
-                        <div class="polaroid-image">[image placeholder]</div>
-                        <div class="polaroid-caption">caption here</div>
-                    </div>
-                    <div class="polaroid">
-                        <div class="polaroid-image">[image placeholder]</div>
-                        <div class="polaroid-caption">caption here</div>
-                    </div>
-                    <div class="polaroid">
-                        <div class="polaroid-image">[image placeholder]</div>
-                        <div class="polaroid-caption">caption here</div>
-                    </div>
-                    <div class="polaroid">
-                        <div class="polaroid-image">[image placeholder]</div>
-                        <div class="polaroid-caption">caption here</div>
-                    </div>
-                    <!-- Duplicates for infinite loop -->
-                    <div class="polaroid">
-                        <div class="polaroid-image">[image placeholder]</div>
-                        <div class="polaroid-caption">caption here</div>
-                    </div>
-                    <div class="polaroid">
-                        <div class="polaroid-image">[image placeholder]</div>
-                        <div class="polaroid-caption">caption here</div>
-                    </div>
-                    <div class="polaroid">
-                        <div class="polaroid-image">[image placeholder]</div>
-                        <div class="polaroid-caption">caption here</div>
-                    </div>
-                    <div class="polaroid">
-                        <div class="polaroid-image">[image placeholder]</div>
-                        <div class="polaroid-caption">caption here</div>
-                    </div>
-                    <div class="polaroid">
-                        <div class="polaroid-image">[image placeholder]</div>
-                        <div class="polaroid-caption">caption here</div>
-                    </div>
-                </div>
+                <div class="polaroid-track" id="polaroidTrack"></div>
             </div>
         </div>
         
@@ -638,45 +622,45 @@
                 <h2 class="section-title">skills & tools</h2>
                 <div class="skills-grid">
                     <div class="skill-category">
-                        <h3>🎨 Design</h3>
+                        <h3>design</h3>
                         <div class="skill-tags">
-                            <span class="skill-tag">Figma</span>
-                            <span class="skill-tag">HTML/CSS/JS</span>
-                            <span class="skill-tag">Responsive Design</span>
-                            <span class="skill-tag">Prototyping</span>
+                            <span class="skill-tag">figma</span>
+                            <span class="skill-tag">html/css/js</span>
+                            <span class="skill-tag">responsive design</span>
+                            <span class="skill-tag">prototyping</span>
                         </div>
                     </div>
                     
                     <div class="skill-category">
-                        <h3>💻 Development</h3>
+                        <h3>development</h3>
                         <div class="skill-tags">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">SQL</span>
-                            <span class="skill-tag">GitHub</span>
-                            <span class="skill-tag">VSCode</span>
-                            <span class="skill-tag">IntelliJ</span>
+                            <span class="skill-tag">python</span>
+                            <span class="skill-tag">java</span>
+                            <span class="skill-tag">sql</span>
+                            <span class="skill-tag">github</span>
+                            <span class="skill-tag">vscode</span>
+                            <span class="skill-tag">intellij</span>
                         </div>
                     </div>
                     
                     <div class="skill-category">
-                        <h3>🔍 UX & Research</h3>
+                        <h3>ux & research</h3>
                         <div class="skill-tags">
-                            <span class="skill-tag">UX Research</span>
-                            <span class="skill-tag">User Testing</span>
-                            <span class="skill-tag">Heuristic Evaluation</span>
-                            <span class="skill-tag">Thematic Analysis</span>
-                            <span class="skill-tag">Affinity Mapping</span>
+                            <span class="skill-tag">ux research</span>
+                            <span class="skill-tag">user testing</span>
+                            <span class="skill-tag">heuristic evaluation</span>
+                            <span class="skill-tag">thematic analysis</span>
+                            <span class="skill-tag">affinity mapping</span>
                         </div>
                     </div>
                     
                     <div class="skill-category">
-                        <h3>⚙️ Other</h3>
+                        <h3>other</h3>
                         <div class="skill-tags">
-                            <span class="skill-tag">OOP</span>
-                            <span class="skill-tag">Database Management</span>
-                            <span class="skill-tag">Paper Prototyping</span>
-                            <span class="skill-tag">Critical Analysis</span>
+                            <span class="skill-tag">oop</span>
+                            <span class="skill-tag">database management</span>
+                            <span class="skill-tag">paper prototyping</span>
+                            <span class="skill-tag">critical analysis</span>
                         </div>
                     </div>
                 </div>
@@ -684,11 +668,11 @@
             
             <!-- Social Links -->
             <div class="social-section">
-                <h2 class="section-title">let's connect ☆</h2>
+                <h2 class="section-title">let's connect</h2>
                 <div class="social-links">
-                    <a href="#" class="social-link">LinkedIn</a>
-                    <a href="#" class="social-link">GitHub</a>
-                    <a href="mailto:your.email@example.com" class="social-link">Email</a>
+                    <a href="#" class="social-link">linkedin</a>
+                    <a href="#" class="social-link">github</a>
+                    <a href="mailto:your.email@example.com" class="social-link">email</a>
                 </div>
             </div>
         </div>
@@ -696,100 +680,135 @@
     
     <!-- Footer -->
     <footer>
-        <p class="footer-text">© 2025 ryan pham → cs/ux @ unimelb</p>
+        <div class="footer-content">
+            <p class="footer-text">© 2025 ryan pham — cs/ux @ unimelb</p>
+        </div>
     </footer>
     
     <script>
-        // Infinite Draggable Carousel
+        // Create infinite polaroid carousel
         const track = document.getElementById('polaroidTrack');
+        const polaroids = [
+            { caption: 'caption here' },
+            { caption: 'caption here' },
+            { caption: 'caption here' },
+            { caption: 'caption here' },
+            { caption: 'caption here' }
+        ];
+        
+        // Triple the polaroids for smooth infinite scroll
+        const tripled = [...polaroids, ...polaroids, ...polaroids];
+        
+        tripled.forEach(item => {
+            const polaroid = document.createElement('div');
+            polaroid.className = 'polaroid';
+            polaroid.innerHTML = `
+                <div class="polaroid-image">[image placeholder]</div>
+                <div class="polaroid-caption">${item.caption}</div>
+            `;
+            track.appendChild(polaroid);
+        });
+        
         let isDragging = false;
-        let startPos = 0;
+        let startX = 0;
+        let scrollLeft = 0;
         let currentTranslate = 0;
-        let prevTranslate = 0;
-        let animationID;
-        let currentIndex = 0;
+        const polaroidWidth = 200 + 32; // width + gap
+        const setSize = polaroids.length;
         
-        const polaroidWidth = 280 + 48; // width + gap
-        const totalPolaroids = track.children.length / 2; // Half are duplicates
+        // Center the middle set initially
+        currentTranslate = -polaroidWidth * setSize;
+        track.style.transform = `translateX(${currentTranslate}px)`;
         
-        track.addEventListener('mousedown', dragStart);
-        track.addEventListener('touchstart', dragStart);
-        track.addEventListener('mouseup', dragEnd);
-        track.addEventListener('touchend', dragEnd);
-        track.addEventListener('mousemove', drag);
-        track.addEventListener('touchmove', drag);
-        track.addEventListener('mouseleave', dragEnd);
-        
-        function dragStart(e) {
+        track.addEventListener('mousedown', (e) => {
             isDragging = true;
-            startPos = getPositionX(e);
-            animationID = requestAnimationFrame(animation);
-            track.style.cursor = 'grabbing';
-        }
+            startX = e.pageX;
+            scrollLeft = currentTranslate;
+            track.classList.add('dragging');
+        });
         
-        function drag(e) {
+        track.addEventListener('mousemove', (e) => {
             if (!isDragging) return;
-            const currentPosition = getPositionX(e);
-            currentTranslate = prevTranslate + currentPosition - startPos;
-        }
-        
-        function dragEnd() {
-            isDragging = false;
-            cancelAnimationFrame(animationID);
-            
-            const movedBy = currentTranslate - prevTranslate;
-            
-            if (movedBy < -100) currentIndex += 1;
-            if (movedBy > 100) currentIndex -= 1;
-            
-            checkInfinite();
-            setPositionByIndex();
-            
-            track.style.cursor = 'grab';
-        }
-        
-        function getPositionX(e) {
-            return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-        }
-        
-        function animation() {
-            setSliderPosition();
-            if (isDragging) requestAnimationFrame(animation);
-        }
-        
-        function setSliderPosition() {
+            e.preventDefault();
+            const x = e.pageX;
+            const walk = (x - startX);
+            currentTranslate = scrollLeft + walk;
             track.style.transform = `translateX(${currentTranslate}px)`;
-        }
+        });
         
-        function setPositionByIndex() {
-            currentTranslate = currentIndex * -polaroidWidth;
-            prevTranslate = currentTranslate;
-            setSliderPosition();
-        }
+        track.addEventListener('mouseup', () => {
+            isDragging = false;
+            track.classList.remove('dragging');
+            checkBoundaries();
+        });
         
-        function checkInfinite() {
-            if (currentIndex >= totalPolaroids) {
-                currentIndex = 0;
-                prevTranslate = 0;
+        track.addEventListener('mouseleave', () => {
+            if (isDragging) {
+                isDragging = false;
+                track.classList.remove('dragging');
+                checkBoundaries();
             }
-            if (currentIndex < 0) {
-                currentIndex = totalPolaroids - 1;
-                prevTranslate = currentIndex * -polaroidWidth;
+        });
+        
+        // Touch events
+        track.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startX = e.touches[0].pageX;
+            scrollLeft = currentTranslate;
+            track.classList.add('dragging');
+        });
+        
+        track.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const x = e.touches[0].pageX;
+            const walk = (x - startX);
+            currentTranslate = scrollLeft + walk;
+            track.style.transform = `translateX(${currentTranslate}px)`;
+        });
+        
+        track.addEventListener('touchend', () => {
+            isDragging = false;
+            track.classList.remove('dragging');
+            checkBoundaries();
+        });
+        
+        function checkBoundaries() {
+            const maxScroll = -polaroidWidth * setSize * 2;
+            const minScroll = 0;
+            
+            // If scrolled too far right, jump to middle set
+            if (currentTranslate > minScroll) {
+                currentTranslate = -polaroidWidth * setSize;
+                track.style.transition = 'none';
+                track.style.transform = `translateX(${currentTranslate}px)`;
+                setTimeout(() => {
+                    track.style.transition = 'transform 0.3s ease-out';
+                }, 10);
+            }
+            
+            // If scrolled too far left, jump to middle set
+            if (currentTranslate < maxScroll) {
+                currentTranslate = -polaroidWidth * setSize;
+                track.style.transition = 'none';
+                track.style.transform = `translateX(${currentTranslate}px)`;
+                setTimeout(() => {
+                    track.style.transition = 'transform 0.3s ease-out';
+                }, 10);
             }
         }
         
         function scrollCarousel(direction) {
-            currentIndex += direction;
-            checkInfinite();
-            setPositionByIndex();
+            currentTranslate += direction * polaroidWidth;
+            track.style.transform = `translateX(${currentTranslate}px)`;
+            setTimeout(checkBoundaries, 300);
         }
         
-        // Auto-loop
+        // Auto-scroll
         setInterval(() => {
             if (!isDragging) {
-                currentIndex++;
-                checkInfinite();
-                setPositionByIndex();
+                currentTranslate -= polaroidWidth;
+                track.style.transform = `translateX(${currentTranslate}px)`;
+                setTimeout(checkBoundaries, 300);
             }
         }, 4000);
     </script>
