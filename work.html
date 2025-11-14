@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>work — ryan pham</title>
+    <meta name="description" content="Portfolio of UX and development projects by Ryan Pham">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-dark: #0a0e27;
+            --bg-darker: #060816;
+            --blue-primary: #3b82f6;
+            --blue-light: #60a5fa;
+            --blue-dark: #1e40af;
+            --blue-glow: rgba(59, 130, 246, 0.4);
+            --text-primary: #e5e7eb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-darker);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .gradient-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--blue-primary), transparent);
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+        
+        .blob-2 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-cyan), transparent);
+            bottom: -250px;
+            left: -150px;
+            animation-delay: 7s;
+        }
+        
+        .blob-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-purple), transparent);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 14s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(100px, -100px) scale(1.1); }
+            66% { transform: translate(-50px, 100px) scale(0.9); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            padding: 2rem 0;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--blue-primary), var(--accent-cyan));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            box-shadow: 0 4px 12px var(--blue-glow);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        nav a:hover {
+            color: var(--blue-light);
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+        }
+        
+        .page-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+        
+        .page-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--blue-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Project Card */
+        .project {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .project:hover {
+            border-color: var(--blue-primary);
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.2);
+        }
+        
+        .project-header {
+            margin-bottom: 2rem;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .project-date {
+            padding: 0.5rem 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        .project-title {
+            font-size: 2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .project-description {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .project-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tool-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            color: var(--blue-light);
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .project-link {
+            padding: 0.875rem 1.75rem;
+            background: linear-gradient(135deg, var(--blue-primary), var(--accent-cyan));
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--blue-glow);
+        }
+        
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px var(--blue-glow);
+        }
+        
+        .project-link.secondary {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--blue-light);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            box-shadow: none;
+        }
+        
+        .project-link.secondary:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: var(--blue-light);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 14, 39, 0.8);
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            backdrop-filter: blur(10px);
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            padding: 3rem 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project {
+                padding: 2rem;
+            }
+            
+            .project-title {
+                font-size: 1.5rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background -->
+    <div class="background-gradient">
+        <div class="gradient-blob blob-1"></div>
+        <div class="gradient-blob blob-2"></div>
+        <div class="gradient-blob blob-3"></div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">RP</div>
+                ryan pham
+            </a>
+            <ul>
+                <li><a href="about.html">about</a></li>
+                <li><a href="work.html">work</a></li>
+                <li><a href="index.html#contact">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">my work</h1>
+                <p class="page-subtitle">UX design & development projects</p>
+            </div>
+            
+            <!-- Project 1: Sweet Mayada Cakes -->
+            <div class="project" id="project-1">
+                <div class="project-header">
+                    <div class="project-meta">
+                        <span class="project-date">March 2025 - July 2025</span>
+                        <span class="project-date">🎨 Web Design</span>
+                    </div>
+                    <h2 class="project-title">Redesigning a local business' website</h2>
+                </div>
+                
+                <p class="project-description">
+                    A comprehensive redesign of Sweet Mayada Cakes' website, focusing on identifying and targeting pain points 
+                    through user research, creating responsive prototypes, and implementing the design with clean, accessible code. 
+                    The project involved end-to-end design process from research to final implementation.
+                </p>
+                
+                <div class="project-tools">
+                    <span class="tool-tag">Figma</span>
+                    <span class="tool-tag">HTML/CSS/JavaScript</span>
+                    <span class="tool-tag">GitHub</span>
+                    <span class="tool-tag">VSCode</span>
+                    <span class="tool-tag">Prototyping</span>
+                </div>
+                
+                <div class="project-links">
+                    <a href="https://pookiesaurus.github.io/info20005-a3/" class="project-link" target="_blank">View Implementation →</a>
+                    <a href="https://www.figma.com/proto/wPL2YvLErO41F7xRiHCuaW/Assignment-2-RYAN-PHAM?page-id=0%3A1&node-id=1-4&p=f&viewport=483%2C124%2C0.11&t=Vf7VE7dSpmrKpA0M-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1%3A4&show-proto-sidebar=1" class="project-link secondary" target="_blank">Digital Prototype</a>
+                    <a href="https://www.sweetmayadacakes.com.au/" class="project-link secondary" target="_blank">Original Site</a>
+                </div>
+            </div>
+            
+            <!-- Project 2: UniMelb Library -->
+            <div class="project" id="project-2">
+                <div class="project-header">
+                    <div class="project-meta">
+                        <span class="project-date">July 2025 - October 2025</span>
+                        <span class="project-date">🔍 UX Research</span>
+                    </div>
+                    <h2 class="project-title">UniMelb Library Website Usability Evaluation</h2>
+                </div>
+                
+                <p class="project-description">
+                    A comprehensive research project evaluating the usability of the University of Melbourne's Library website. 
+                    The study involved conducting heuristic evaluations, user testing sessions, thematic analysis of findings, 
+                    and developing actionable recommendations for improving the user experience. This project demonstrated 
+                    strong research methodologies and critical analysis skills.
+                </p>
+                
+                <div class="project-tools">
+                    <span class="tool-tag">UX Research</span>
+                    <span class="tool-tag">User Testing</span>
+                    <span class="tool-tag">Heuristic Evaluation</span>
+                    <span class="tool-tag">Thematic Analysis</span>
+                    <span class="tool-tag">Affinity Mapping</span>
+                </div>
+                
+                <div class="project-links">
+                    <a href="https://youtu.be/sy_EGIsYE4o" class="project-link" target="_blank">Video Report →</a>
+                    <a href="https://docs.google.com/document/d/1pzzbFKABJkXkHy3pQaPq1TXqv-U6OFnaEWZT2im1Cu4/edit?usp=sharing" class="project-link secondary" target="_blank">Written Report</a>
+                </div>
+            </div>
+            
+            <!-- Project 3: AI Portfolio Builder -->
+            <div class="project" id="project-3">
+                <div class="project-header">
+                    <div class="project-meta">
+                        <span class="project-date">August 2024 - November 2024</span>
+                        <span class="project-date">🤖 Product Design</span>
+                    </div>
+                    <h2 class="project-title">AI Portfolio Builder Prototype</h2>
+                </div>
+                
+                <p class="project-description">
+                    A collaborative project designing an AI-powered resume and portfolio builder. The project featured extensive 
+                    user research through interviews and thematic analysis to understand user needs and pain points. I was 
+                    responsible for prototyping the home page and user onboarding process, as well as ensuring design cohesion 
+                    across the entire application. The final deliverable included a high-fidelity prototype, comprehensive reports, 
+                    and a video presentation detailing the design process and future improvements.
+                </p>
+                
+                <div class="project-tools">
+                    <span class="tool-tag">Figma</span>
+                    <span class="tool-tag">Paper Prototyping</span>
+                    <span class="tool-tag">Digital Prototyping</span>
+                    <span class="tool-tag">User Research</span>
+                    <span class="tool-tag">User Testing</span>
+                    <span class="tool-tag">Critical Analysis</span>
+                </div>
+                
+                <div class="project-links">
+                    <a href="https://www.figma.com/proto/QNDITRtsATW1iuQ1NETLIM/Prototype---Working-Draft?page-id=0%3A1&node-id=110-580&viewport=3067%2C682%2C0.4&t=hdwk2bk7kJv6bODh-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=110%3A580&show-proto-sidebar=1" class="project-link" target="_blank">View Prototype →</a>
+                    <a href="https://youtu.be/CewrQMYpqLo" class="project-link secondary" target="_blank">Video Presentation</a>
+                    <a href="https://docs.google.com/document/d/1b3TCk8ejWje5vmFLATLy0OfOrn3f4Uko/edit?usp=sharing&ouid=114976375432775018213&rtpof=true&sd=true" class="project-link secondary" target="_blank">Research Report</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">© 2025 ryan pham → cs/ux @ unimelb</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about — ryan pham</title>
+    <meta name="description" content="cs + ux student at unimelb, melbourne">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-dark: #0a0e27;
+            --bg-darker: #060816;
+            --blue-primary: #3b82f6;
+            --blue-light: #60a5fa;
+            --blue-dark: #1e40af;
+            --blue-glow: rgba(59, 130, 246, 0.4);
+            --text-primary: #e5e7eb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-darker);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background with blurry gradients */
+        .background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .gradient-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--blue-primary), transparent);
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+        
+        .blob-2 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-cyan), transparent);
+            bottom: -250px;
+            left: -150px;
+            animation-delay: 7s;
+        }
+        
+        .blob-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-purple), transparent);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 14s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(100px, -100px) scale(1.1);
+            }
+            66% {
+                transform: translate(-50px, 100px) scale(0.9);
+            }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            padding: 2rem 0;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--blue-primary), var(--accent-cyan));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            box-shadow: 0 4px 12px var(--blue-glow);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        nav a:hover {
+            color: var(--blue-light);
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+            min-height: 80vh;
+        }
+        
+        .page-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+        
+        .page-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--blue-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* About Section */
+        .about-section {
+            margin-bottom: 5rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 2rem;
+            color: var(--blue-light);
+        }
+        
+        .bio-text {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+        
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .skill-category {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            border-color: var(--blue-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+        
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--blue-light);
+            border-color: var(--blue-light);
+        }
+        
+        /* Social Links */
+        .social-section {
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .social-link:hover {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--blue-light);
+            border-color: var(--blue-light);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 14, 39, 0.8);
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            backdrop-filter: blur(10px);
+            margin-top: 6rem;
+        }
+        
+        .footer-content {
+            padding: 3rem 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                flex-direction: column;
+            }
+            
+            .social-link {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background -->
+    <div class="background-gradient">
+        <div class="gradient-blob blob-1"></div>
+        <div class="gradient-blob blob-2"></div>
+        <div class="gradient-blob blob-3"></div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">RP</div>
+                ryan pham
+            </a>
+            <ul>
+                <li><a href="about.html">about</a></li>
+                <li><a href="work.html">work</a></li>
+                <li><a href="index.html#contact">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">about me</h1>
+                <p class="page-subtitle">Currently studying UX design and CS at UniMelb</p>
+            </div>
+            
+            <!-- Bio Section -->
+            <div class="about-section">
+                <h2 class="section-title">who i am</h2>
+                <p class="bio-text">
+                    I'm a university student passionate about crafting accessible and sustainable solutions to design problems. 
+                    Currently studying Computer Science and UX Design at the University of Melbourne, I'm exploring the intersection 
+                    of technology and human-centered design.
+                </p>
+                <p class="bio-text">
+                    My approach combines technical skills in software development with a deep understanding of user needs and behaviors. 
+                    I believe that great design should be both beautiful and functional, accessible to all users, and built with 
+                    sustainability in mind.
+                </p>
+            </div>
+            
+            <!-- Skills Section -->
+            <div class="about-section">
+                <h2 class="section-title">skills & tools</h2>
+                <div class="skills-grid">
+                    <!-- Design Skills -->
+                    <div class="skill-category">
+                        <h3>🎨 Design</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">HTML, CSS, JavaScript</span>
+                            <span class="skill-tag">Responsive Design</span>
+                            <span class="skill-tag">Prototyping</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Development Skills -->
+                    <div class="skill-category">
+                        <h3>💻 Development</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">VSCode</span>
+                            <span class="skill-tag">IntelliJ IDEA</span>
+                        </div>
+                    </div>
+                    
+                    <!-- UX & Research -->
+                    <div class="skill-category">
+                        <h3>🔍 UX & Research</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">UX Research</span>
+                            <span class="skill-tag">User Testing</span>
+                            <span class="skill-tag">Heuristic Evaluation</span>
+                            <span class="skill-tag">Thematic Analysis</span>
+                            <span class="skill-tag">Affinity Mapping</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Other Skills -->
+                    <div class="skill-category">
+                        <h3>⚙️ Other</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Object-Oriented Programming</span>
+                            <span class="skill-tag">Database Management</span>
+                            <span class="skill-tag">Paper Prototyping</span>
+                            <span class="skill-tag">Critical Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="social-section">
+                <h2 class="section-title">let's connect</h2>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/phamaryan" class="social-link" target="_blank">
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/pookiesaurus" class="social-link" target="_blank">
+                        GitHub
+                    </a>
+                    <a href="mailto:ryanpham29@gmail.com" class="social-link">
+                        Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">© 2025 ryan pham → cs/ux @ unimelb</p>
+        </div>
+    </footer>
+</body>
+</html>
