@@ -1,1 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #E8E3D6;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #E8E3D6;
+            border-bottom: 5px solid #000;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            padding: 1.5rem 2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-right: 5px solid #000;
+            background-color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            flex: 1;
+        }
+
+        .nav-links li {
+            border-right: 5px solid #000;
+        }
+
+        .nav-links li:last-child {
+            border-right: none;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 1.5rem 2rem;
+            text-decoration: none;
+            color: #000;
+            font-family: 'Arial', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-links a:hover {
+            background-color: #FFB5C5;
+        }
+
+        .cta-button {
+            background-color: #FFB5C5;
+            border-left: 5px solid #000;
+            padding: 1.5rem 2.5rem;
+            font-family: 'Arial', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .cta-button:hover {
+            background-color: #ff9db0;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero h1 .italic-word {
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .hero-image {
+            border: 5px solid #000;
+            padding: 1rem;
+            background-color: #fff;
+            margin: 3rem auto;
+            max-width: 900px;
+            position: relative;
+        }
+
+        .hero-image::before {
+            content: '⬛ FEATURED WORK';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            background-color: #E8E3D6;
+            padding: 0.5rem 1rem;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: 3px solid #000;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 500px;
+            background: 
+                radial-gradient(circle at 20% 50%, #FF6B9D 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, #FFA500 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, #C8A2C8 0%, transparent 50%),
+                #A8C8F0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier New', monospace;
+            font-size: 1.5rem;
+            color: rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+            font-weight: bold;
+        }
+
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.03) 0px,
+                    rgba(0, 0, 0, 0.03) 1px,
+                    transparent 1px,
+                    transparent 2px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.03) 0px,
+                    rgba(0, 0, 0, 0.03) 1px,
+                    transparent 1px,
+                    transparent 2px
+                );
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .image-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.02) 2px,
+                    rgba(0, 0, 0, 0.02) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* About Section */
+        .about {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .about h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            border: 5px solid #000;
+            background-color: #fff;
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .card-label {
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            padding: 0.5rem 1rem;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: 3px solid #000;
+        }
+
+        .card-label.pink {
+            background-color: #FFB5C5;
+        }
+
+        .card-label.orange {
+            background-color: #FFB366;
+        }
+
+        .card-label.green {
+            background-color: #B5FFB3;
+        }
+
+        .card h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+            font-weight: 400;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .card-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #fff;
+            border: 3px solid #000;
+            text-decoration: none;
+            color: #000;
+            font-family: 'Arial', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+        }
+
+        .card-button:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Projects Section */
+        .projects {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .projects h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .project-card {
+            border: 5px solid #000;
+            background-color: #fff;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier New', monospace;
+            color: rgba(0, 0, 0, 0.5);
+            border-bottom: 5px solid #000;
+            position: relative;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.03) 0px,
+                    rgba(0, 0, 0, 0.03) 1px,
+                    transparent 1px,
+                    transparent 2px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.03) 0px,
+                    rgba(0, 0, 0, 0.03) 1px,
+                    transparent 1px,
+                    transparent 2px
+                );
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.02) 2px,
+                    rgba(0, 0, 0, 0.02) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Project-specific backgrounds */
+        .project-image.meditime {
+            background: 
+                radial-gradient(circle at 30% 40%, #FFB5C5 0%, transparent 60%),
+                radial-gradient(circle at 70% 60%, #B5E7FF 0%, transparent 60%),
+                #FFE5D9;
+        }
+
+        .project-image.research {
+            background: 
+                radial-gradient(circle at 25% 35%, #FFF4B5 0%, transparent 55%),
+                radial-gradient(circle at 75% 65%, #FFD4B5 0%, transparent 55%),
+                #FFFACD;
+        }
+
+        .project-image.library {
+            background: 
+                radial-gradient(circle at 35% 45%, #B5FFC8 0%, transparent 60%),
+                radial-gradient(circle at 65% 55%, #B5E0FF 0%, transparent 60%),
+                #E0F7FA;
+        }
+
+        .project-image.ai-portfolio {
+            background: 
+                radial-gradient(circle at 40% 30%, #E0B5FF 0%, transparent 55%),
+                radial-gradient(circle at 60% 70%, #FFB5E0 0%, transparent 55%),
+                #F0E0FF;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            padding: 0.3rem 0.8rem;
+            border: 2px solid #000;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Contact Section */
+        .contact {
+            max-width: 800px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-box {
+            border: 5px solid #000;
+            background-color: #fff;
+            padding: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-box p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #fff;
+            border: 3px solid #000;
+            text-decoration: none;
+            color: #000;
+            font-family: 'Arial', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+        }
+
+        .contact-link:hover {
+            background-color: #FFB5C5;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 5px solid #000;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 6rem;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        /* Beta tag */
+        .beta {
+            display: inline-block;
+            background-color: #FFB5C5;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.6rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+            border: 2px solid #000;
+        }
+
+        /* Decorative elements for retro feel */
+        .image-placeholder .text-content,
+        .project-image .text-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Add vintage dot pattern overlay */
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* Halftone effect for images */
+        .halftone-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.05) 30%);
+            background-size: 4px 4px;
+            pointer-events: none;
+            z-index: 3;
+            mix-blend-mode: multiply;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-container {
+                flex-direction: column;
+            }
+
+            .logo {
+                border-right: none;
+                border-bottom: 5px solid #000;
+            }
+
+            .nav-links {
+                flex-direction: column;
+            }
+
+            .nav-links li {
+                border-right: none;
+                border-bottom: 5px solid #000;
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .cta-button {
+                border-left: none;
+                border-top: 5px solid #000;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">◼ RYAN</div>
+            <ul class="nav-links">
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+            <div class="cta-button">HIRE ME</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>
+            Crafting <span class="italic-word">accessible</span><br>
+            and sustainable solutions.
+        </h1>
+        
+        <div class="hero-image">
+            <img src="https://pnukcjmfllckttldpzbq.supabase.co/storage/v1/object/public/tinyfolio-storage/project-images/d6caaa12-4f4e-4fa1-bf7b-effd4620adc7/0aeaf4db-b16f-49d9-8c3d-a3e962a88b43/0aeaf4db-b16f-49d9-8c3d-a3e962a88b43-1762768843326.PNG" alt="Featured Work - MediTime" style="width: 100%; height: auto; display: block;">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>What I bring to the table.</h2>
+        
+        <div class="about-content">
+            <div class="card">
+                <span class="card-label pink">⬛ UX DESIGNER</span>
+                <h3>Design & Research</h3>
+                <p>
+                    University student studying UX design at UniMelb, passionate about 
+                    creating accessible and user-centered solutions. From user research 
+                    to high-fidelity prototypes, I focus on solving real design problems.
+                </p>
+                <a href="#projects" class="card-button">View Projects</a>
+            </div>
+
+            <div class="card">
+                <span class="card-label orange">⬛ STUDENT</span>
+                <h3>Computer Science</h3>
+                <p>
+                    Currently studying Computer Science at University of Melbourne, 
+                    combining technical knowledge with design thinking to create 
+                    meaningful digital experiences.
+                </p>
+                <a href="#contact" class="card-button">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2>Selected Projects</h2>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image meditime" style="background-image: url('https://pnukcjmfllckttldpzbq.supabase.co/storage/v1/object/public/tinyfolio-storage/project-images/d6caaa12-4f4e-4fa1-bf7b-effd4620adc7/0aeaf4db-b16f-49d9-8c3d-a3e962a88b43/0aeaf4db-b16f-49d9-8c3d-a3e962a88b43-1762768843326.PNG'); background-size: cover; background-position: center;">
+                    <span class="text-content" style="display: none;">MediTime</span>
+                </div>
+                <div class="project-content">
+                    <h3>MediTime</h3>
+                    <p>
+                        A medicine reminder, information hub, and medication tracker designed 
+                        for elderly patients with complex medication regimes.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag">UX Research</span>
+                        <span class="tag">User Testing</span>
+                    </div>
+                    <a href="https://www.figma.com/proto/9kHlnkP2NRlJJsQk5vdvS3/Prototype?page-id=0%3A1&node-id=1-3&viewport=569%2C418%2C0.07&t=IHcNXNYRrjljFy8d-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A3" class="card-button" target="_blank">View Prototype</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image research" style="background-image: url('https://pnukcjmfllckttldpzbq.supabase.co/storage/v1/object/public/tinyfolio-storage/project-images/d6caaa12-4f4e-4fa1-bf7b-effd4620adc7/4db56494-d2f1-468b-a1ef-5ab1bc810cb9/4db56494-d2f1-468b-a1ef-5ab1bc810cb9-1762770506267.png'); background-size: cover; background-position: center;">
+                    <span class="text-content" style="display: none;">Research</span>
+                </div>
+                <div class="project-content">
+                    <h3>What Makes 'Good' Graphic Design?</h3>
+                    <p>
+                        A research project exploring professional graphic designers' perspectives 
+                        on 'good' design through literature review, interviews, and content analysis.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Research</span>
+                        <span class="tag">Interviews</span>
+                        <span class="tag">Analysis</span>
+                    </div>
+                    <a href="https://docs.google.com/document/d/13vx31GQI40-uA_gHsRvDLpYlH73vXdOtYYuA2BPdZbQ/edit?usp=sharing" class="card-button" target="_blank">View Research</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image library" style="background-image: url('https://pnukcjmfllckttldpzbq.supabase.co/storage/v1/object/public/tinyfolio-storage/project-images/d6caaa12-4f4e-4fa1-bf7b-effd4620adc7/19d8dd67-d55a-4233-9d23-b37751e092e3/19d8dd67-d55a-4233-9d23-b37751e092e3-1762774277611.png'); background-size: cover; background-position: center;">
+                    <span class="text-content" style="display: none;">Case Study</span>
+                </div>
+                <div class="project-content">
+                    <h3>UniMelb Library Website Usability Evaluation</h3>
+                    <p>
+                        A research project consisting of heuristic evaluation, user testing, 
+                        thematic analysis and recommendations for the university library website.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">UX Research</span>
+                        <span class="tag">User Testing</span>
+                        <span class="tag">Evaluation</span>
+                    </div>
+                    <a href="https://youtu.be/sy_EGIsYE4o" class="card-button" target="_blank">View Report</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image ai-portfolio" style="background-image: url('https://pnukcjmfllckttldpzbq.supabase.co/storage/v1/object/public/tinyfolio-storage/project-images/d6caaa12-4f4e-4fa1-bf7b-effd4620adc7/15b7e932-bfa9-4c35-bda6-c9be0c069f7e/15b7e932-bfa9-4c35-bda6-c9be0c069f7e-1762781753128.png'); background-size: cover; background-position: center;">
+                    <span class="text-content" style="display: none;">Prototype</span>
+                </div>
+                <div class="project-content">
+                    <h3>AI Portfolio Builder Prototype</h3>
+                    <p>
+                        Interactive prototype exploring AI-assisted portfolio creation through 
+                        paper and digital prototyping, user research, and critical analysis.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag">Prototyping</span>
+                        <span class="tag">User Testing</span>
+                    </div>
+                    <a href="https://www.figma.com/proto/QNDITRtsATW1iuQ1NETLIM/Prototype---Working-Draft?page-id=0%3A1&node-id=110-580&viewport=3067%2C682%2C0.4&t=hdwk2bk7kJv6bODh-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=110%3A580&show-proto-sidebar=1" class="card-button" target="_blank">View Prototype</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Let's work together.</h2>
+        
+        <div class="contact-box">
+            <p>
+                I'm a university student passionate about crafting accessible and sustainable 
+                solutions to design problems. Currently studying UX design and Computer Science 
+                at the University of Melbourne. Let's connect!
+            </p>
+            
+            <div class="contact-links">
+                <a href="mailto:contact@ryan.com" class="contact-link">✉ Email Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Ryan. Designed & Built with care. <span class="beta">BETA</span></p>
+    </footer>
+</body>
+</html>
