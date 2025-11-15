@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Ryan Pham</title>
+    <meta name="description" content="CS + UX student at UniMelb, Melbourne">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.gstatic.com/s/geist/v4/gyByhwUxId8gMEwcGFU.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/cursor.css">
+    <link rel="stylesheet" href="css/about.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="cursor"></div>
+    
+    <!-- ASCII Text Art Background -->
+    <div class="background-graphics">
+        <div class="ascii-art">    *    
+   ***   
+  *****  
+ ******* 
+*********
+ ******* 
+  *****  
+   ***   
+    *    </div>
+        <div class="ascii-art">  { }
+ /   \
+|  *  |
+ \   /
+  { }</div>
+        <div class="ascii-art">  < />
+ <   >
+  <>
+ <   >
+  < /></div>
+        <div class="ascii-art">  + +
+ +++++
++ + + +
+ +++++
+  + +</div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">RP</div>
+                Ryan Pham
+            </a>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">About Me</h1>
+                <p class="page-subtitle">Currently studying UX design and CS at UniMelb</p>
+            </div>
+            
+            <!-- Bio Section -->
+            <div class="about-section">
+                <h2 class="section-title">who i am</h2>
+                <p class="bio-text">
+                    I'm a university student passionate about crafting accessible and sustainable solutions to design problems. 
+                    Currently studying computer science and UX design at the University of Melbourne, I'm exploring the intersection 
+                    of technology and human-centered design.
+                </p>
+                <p class="bio-text">
+                    My approach combines technical skills in software development with a deep understanding of user needs and behaviors. 
+                    I believe that great design should be both beautiful and functional, accessible to all users, and built with 
+                    sustainability in mind.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Polaroid Carousel (Full Width) -->
+        <div class="polaroid-section">
+            <h2 class="section-title carousel-title">things i love</h2>
+            <div class="polaroid-carousel">
+                <div class="carousel-nav carousel-nav-left" onclick="scrollCarousel(-1)">←</div>
+                <div class="carousel-nav carousel-nav-right" onclick="scrollCarousel(1)">→</div>
+                
+                <div class="polaroid-track" id="polaroidTrack"></div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <!-- Skills Section -->
+            <div class="about-section">
+                <h2 class="section-title">skills & tools</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Design</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">HTML/CSS/JS</span>
+                            <span class="skill-tag">Responsive Design</span>
+                            <span class="skill-tag">Prototyping</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Development</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">VS Code</span>
+                            <span class="skill-tag">IntelliJ</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>UX & Research</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">UX Research</span>
+                            <span class="skill-tag">User Testing</span>
+                            <span class="skill-tag">Heuristic Evaluation</span>
+                            <span class="skill-tag">Thematic Analysis</span>
+                            <span class="skill-tag">Affinity Mapping</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Other</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">OOP</span>
+                            <span class="skill-tag">Database Management</span>
+                            <span class="skill-tag">Paper Prototyping</span>
+                            <span class="skill-tag">Critical Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="social-section">
+                <h2 class="section-title">let's connect</h2>
+                <div class="social-links">
+                    <a href="#" class="social-link">LinkedIn</a>
+                    <a href="#" class="social-link">GitHub</a>
+                    <a href="mailto:your.email@example.com" class="social-link">Email</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">© 2025 Ryan Pham — CS/UX @ UniMelb</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="js/cursor.js"></script>
+    <script src="js/carousel.js"></script>
+</body>
+</html>

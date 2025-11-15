@@ -1,0 +1,74 @@
+/* Work Page Specific Styles */
+
+.main-content {
+    padding: 4rem 0;
+}
+
+.page-header {
+    margin-bottom: 4rem;
+}
+
+.project {
+    margin-bottom: 2.5rem;
+    padding: 2.5rem;
+}
+
+.project-header {
+    margin-bottom: 1.5rem;
+}
+
+.project-meta {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.project-title {
+    font-size: 1.75rem;
+    font-family: 'Geist', sans-serif;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+.project-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.project-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-link {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    background: var(--blue-500);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.project-link:hover {
+    background: var(--blue-600);
+}
+
+@media (max-width: 768px) {
+    .project {
+        padding: 1.5rem;
+    }
+    
+    .project-title {
+        font-size: 1.375rem;
+    }
+}

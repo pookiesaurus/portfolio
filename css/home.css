@@ -1,0 +1,98 @@
+/* Home Page Specific Styles */
+
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding: 4rem 0;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero-tag {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--blue-100);
+    border-radius: 20px;
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 300;
+    font-family: 'Noto Serif', serif;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.hero-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.projects {
+    padding: 4rem 0;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+}
+
+.project-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.project-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+.project-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}

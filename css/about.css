@@ -1,0 +1,301 @@
+/* About Page Specific Styles */
+
+.main-content {
+    padding: 4rem 0;
+}
+
+.page-header {
+    margin-bottom: 4rem;
+}
+
+.about-section {
+    margin-bottom: 5rem;
+}
+
+.bio-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+/* Polaroid Carousel */
+.polaroid-section {
+    margin: 5rem 0;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
+    padding: 3rem 0;
+    background: linear-gradient(180deg, transparent, rgba(59, 130, 246, 0.03), transparent);
+}
+
+.polaroid-carousel {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.polaroid-track {
+    display: flex;
+    gap: 2rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: grab;
+    user-select: none;
+    will-change: transform;
+}
+
+.polaroid-track:active {
+    cursor: grabbing;
+}
+
+.carousel-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.polaroid {
+    background: white;
+    padding: 0.75rem;
+    padding-bottom: 2.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    position: relative;
+    flex-shrink: 0;
+    width: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.polaroid:nth-child(10n+1) { transform: rotate(-4deg); }
+.polaroid:nth-child(10n+2) { transform: rotate(3deg); }
+.polaroid:nth-child(10n+3) { transform: rotate(-2deg); }
+.polaroid:nth-child(10n+4) { transform: rotate(5deg); }
+.polaroid:nth-child(10n+5) { transform: rotate(-3deg); }
+.polaroid:nth-child(10n+6) { transform: rotate(2deg); }
+.polaroid:nth-child(10n+7) { transform: rotate(-5deg); }
+.polaroid:nth-child(10n+8) { transform: rotate(4deg); }
+.polaroid:nth-child(10n+9) { transform: rotate(-1deg); }
+.polaroid:nth-child(10n+10) { transform: rotate(3deg); }
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.05) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.polaroid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.01) 2px, rgba(0, 0, 0, 0.01) 4px);
+    pointer-events: none;
+}
+
+.polaroid::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 70px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.polaroid-image {
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--blue-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    position: relative;
+    overflow: hidden;
+}
+
+.polaroid-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 40%, transparent 60%, rgba(0, 0, 0, 0.03) 100%);
+}
+
+.polaroid-caption {
+    position: absolute;
+    bottom: 0.3rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    text-align: center;
+    font-family: 'Noto Serif', serif;
+    font-size: 0.75rem;
+    color: var(--text-primary);
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.polaroid:hover .polaroid-caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid var(--blue-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    color: var(--blue-500);
+}
+
+.carousel-nav:hover {
+    background: var(--blue-500);
+    color: white;
+    border-color: var(--blue-500);
+}
+
+.carousel-nav-left {
+    left: 2rem;
+}
+
+.carousel-nav-right {
+    right: 2rem;
+}
+
+/* Scrollbar */
+.carousel-scrollbar-track {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    max-width: 600px;
+    height: 6px;
+    background: rgba(191, 219, 254, 0.3);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.carousel-scrollbar-thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--blue-400);
+    border-radius: 3px;
+    cursor: grab;
+    transition: background 0.2s ease;
+}
+
+.carousel-scrollbar-thumb:hover {
+    background: var(--blue-500);
+}
+
+.carousel-scrollbar-thumb:active {
+    cursor: grabbing;
+    background: var(--blue-600);
+}
+
+/* Skills */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.skill-category h3 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-family: 'Geist', sans-serif;
+    font-weight: 400;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* Social */
+.social-section {
+    margin-top: 4rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border: 1px solid var(--blue-300);
+    border-radius: 20px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--blue-500);
+    color: white;
+    border-color: var(--blue-500);
+}
+
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .carousel-nav {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+    
+    .carousel-nav-left {
+        left: 1rem;
+    }
+    
+    .carousel-nav-right {
+        right: 1rem;
+    }
+    
+    .polaroid {
+        width: 180px;
+    }
+}

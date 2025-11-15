@@ -1,0 +1,27 @@
+/* Custom Cursor Styles */
+
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--blue-400);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease, background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: white;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.custom-cursor.hover-project {
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    background: var(--blue-500);
+    border-color: var(--blue-500);
+}

@@ -1,0 +1,53 @@
+/* Individual Project Page Styles */
+
+.main-content {
+    padding: 4rem 0;
+}
+
+.project-meta {
+    display: flex;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.section {
+    margin: 3rem 0;
+}
+
+/* Section title inherits from main.css - uppercase, smaller font, weight 400 */
+
+.content-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+.link-btn {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    background: var(--blue-500);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.link-btn:hover {
+    background: var(--blue-600);
+}
+
+.link-btn.secondary {
+    background: white;
+    color: var(--text-primary);
+    border: 1px solid var(--blue-200);
+}
+
+.link-btn.secondary:hover {
+    border-color: var(--blue-500);
+}

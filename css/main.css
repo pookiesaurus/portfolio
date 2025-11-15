@@ -1,0 +1,371 @@
+/* Main Stylesheet - Ryan Pham Portfolio */
+
+/* Font Faces */
+@font-face {
+    font-family: 'Geist';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/geist/v4/gyByhwUxId8gMEwcGFU.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Geist';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/geist/v4/gyByhwUxId8gMEwcGFU.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Geist';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/geist/v4/gyByhwUxId8gMEwcGFU.woff2) format('woff2');
+}
+
+/* CSS Variables */
+:root {
+    --bg-primary: #fafaf8;
+    --blue-100: #dbeafe;
+    --blue-200: #bfdbfe;
+    --blue-300: #93c5fd;
+    --blue-400: #60a5fa;
+    --blue-500: #3b82f6;
+    --blue-600: #2563eb;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    font-weight: 300;
+}
+
+/* ASCII Background */
+.background-graphics {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    font-family: 'Courier New', monospace;
+    color: var(--blue-200);
+    opacity: 0.4;
+}
+
+.ascii-art {
+    position: absolute;
+    white-space: pre;
+    font-size: 12px;
+    line-height: 1;
+    user-select: none;
+}
+
+.ascii-art:nth-child(1) {
+    top: 15%;
+    right: 10%;
+    transform: rotate(15deg);
+}
+
+.ascii-art:nth-child(2) {
+    bottom: 20%;
+    left: 8%;
+    transform: rotate(-12deg);
+}
+
+.ascii-art:nth-child(3) {
+    top: 50%;
+    right: 15%;
+    transform: rotate(8deg);
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header & Navigation */
+header {
+    padding: 2rem 0;
+    background: rgba(250, 250, 248, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--blue-200);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Geist', sans-serif;
+    color: var(--text-primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-icon {
+    width: 28px;
+    height: 28px;
+    background: var(--blue-400);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    color: white;
+    font-size: 0.75rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+nav a:hover {
+    color: var(--blue-500);
+}
+
+/* Typography */
+
+/* Main headings - Noto Serif weight 300 */
+h1,
+.page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-family: 'Noto Serif', serif;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 300;
+}
+
+/* Smaller headings - Geist weight 400, slightly larger than body */
+h2,
+h3 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+}
+
+h3 {
+    font-size: 1.125rem;
+}
+
+/* Body text - Geist weight 300 */
+p {
+    font-weight: 300;
+}
+
+.page-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* Section headings - Geist weight 400, smaller font, all caps */
+.section-title {
+    font-size: 0.875rem;
+    font-family: 'Geist', sans-serif;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.75rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: var(--blue-500);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--blue-600);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--text-primary);
+    border: 1px solid var(--blue-300);
+}
+
+.btn-secondary:hover {
+    border-color: var(--blue-500);
+}
+
+/* Tags */
+.meta-tag,
+.project-date,
+.skill-tag,
+.tool-tag {
+    padding: 0.4rem 1rem;
+    background: var(--blue-100);
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+/* Cards */
+.project-card,
+.skill-category,
+.project {
+    background: white;
+    border: 1px solid var(--blue-200);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover,
+.skill-category:hover,
+.project:hover {
+    border-color: var(--blue-400);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);
+}
+
+/* Footer */
+footer {
+    background: white;
+    border-top: 1px solid var(--blue-200);
+    margin-top: 4rem;
+    padding: 2rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-text {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-text h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    padding: 0.6rem 1.25rem;
+    background: white;
+    border: 1px solid var(--blue-300);
+    border-radius: 20px;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+.footer-link:hover {
+    background: var(--blue-500);
+    color: white;
+    border-color: var(--blue-500);
+}
+
+.footer-divider {
+    height: 1px;
+    background: var(--blue-200);
+    margin: 2rem 0;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav ul {
+        gap: 1rem;
+    }
+    
+    .footer-main {
+        flex-direction: column;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
