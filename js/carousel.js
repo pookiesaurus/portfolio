@@ -1,5 +1,13 @@
 // Bounded Polaroid Carousel with Wheel Scroll
 const track = document.getElementById('polaroidTrack');
+
+// Safety check
+if (!track) {
+    console.error('Polaroid track element not found!');
+} else {
+    console.log('Carousel initializing...', track);
+}
+
 const container = track.parentElement;
 
 const polaroids = [
@@ -210,9 +218,22 @@ scrollbarTrack.addEventListener('click', (e) => {
     scrollbarThumb.style.left = newLeft + 'px';
 });
 
-// Initialize
-updateScrollbarSize();
-updateScrollbar();
+// Initialize - start at right boundary with padding
+setTimeout(() => {
+    const { max } = getBoundaries();
+    currentTranslate = max;
+    track.style.transform = `translateX(${currentTranslate}px)`;
+    updateScrollbarSize();
+    updateScrollbar();
+    
+    console.log('Carousel initialized:', {
+        trackWidth: track.scrollWidth,
+        containerWidth: container.offsetWidth,
+        maxScroll: max,
+        minScroll: getBoundaries().min,
+        currentTranslate
+    });
+}, 100);
 
 // Update on window resize
 window.addEventListener('resize', () => {
