@@ -34,12 +34,19 @@ let scrollLeft = 0;
 let currentTranslate = 0;
 const polaroidWidth = 200 + 32; // width + gap
 
-// Calculate boundaries
+// Calculate boundaries with padding
 function getBoundaries() {
     const containerWidth = container.offsetWidth;
     const trackWidth = track.scrollWidth;
-    const maxScroll = -(trackWidth - containerWidth);
-    return { min: maxScroll, max: 0 };
+    const padding = 100; // Padding from edges when at boundaries
+    
+    // Right boundary: start with padding from left
+    const maxScroll = padding;
+    
+    // Left boundary: ensure last polaroid has padding from right edge
+    const minScroll = -(trackWidth - containerWidth + padding);
+    
+    return { min: minScroll, max: maxScroll };
 }
 
 // Constrain translation within boundaries
@@ -110,7 +117,9 @@ track.addEventListener('touchend', () => {
 // Wheel scroll support
 container.addEventListener('wheel', (e) => {
     e.preventDefault();
-    currentTranslate = constrainTranslate(currentTranslate - e.deltaY);
+    // Reduce sensitivity of wheel scroll
+    const scrollAmount = e.deltaY * 0.5;
+    currentTranslate = constrainTranslate(currentTranslate - scrollAmount);
     track.style.transform = `translateX(${currentTranslate}px)`;
     updateScrollbar();
 }, { passive: false });
