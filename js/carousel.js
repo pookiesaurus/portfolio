@@ -40,11 +40,13 @@ function getBoundaries() {
     const trackWidth = track.scrollWidth;
     const padding = 100; // Padding from edges when at boundaries
     
-    // Right boundary: start with padding from left
+    // Right boundary: start with padding from left edge
+    // Positive translateX moves track right, showing space on the left
     const maxScroll = padding;
     
     // Left boundary: ensure last polaroid has padding from right edge
-    const minScroll = -(trackWidth - containerWidth + padding);
+    // We need to scroll LESS far left, so subtract padding
+    const minScroll = -(trackWidth - containerWidth - padding);
     
     return { min: minScroll, max: maxScroll };
 }
