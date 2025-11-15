@@ -70,7 +70,8 @@ function updateScrollbar() {
     const scrollPercent = max === min ? 0 : (currentTranslate - max) / (min - max);
     const scrollbar = document.querySelector('.carousel-scrollbar-thumb');
     if (scrollbar) {
-        const maxThumbPos = container.offsetWidth - scrollbar.offsetWidth;
+        const scrollbarTrackWidth = scrollbarTrack.offsetWidth;
+        const maxThumbPos = scrollbarTrackWidth - scrollbar.offsetWidth;
         scrollbar.style.left = (scrollPercent * maxThumbPos) + 'px';
     }
 }
@@ -150,15 +151,22 @@ container.appendChild(scrollbarTrack);
 
 // Update scrollbar size based on content
 function updateScrollbarSize() {
-    const { min } = getBoundaries();
+    const { min, max } = getBoundaries();
     const containerWidth = container.offsetWidth;
     const trackWidth = track.scrollWidth;
-    const visibleRatio = containerWidth / trackWidth;
-    const thumbWidth = Math.max(50, containerWidth * visibleRatio);
+    const scrollbarTrackWidth = scrollbarTrack.offsetWidth; // Actual width of scrollbar (60% of container, max 600px)
+    
+    // Calculate the total scrollable range (accounting for padding)
+    const scrollableRange = max - min;
+    
+    // Thumb width should represent visible area vs total scrollable area
+    // Calculate as a ratio, then apply to the actual scrollbar track width
+    const visibleRatio = containerWidth / (containerWidth + scrollableRange);
+    const thumbWidth = Math.max(50, scrollbarTrackWidth * visibleRatio);
     scrollbarThumb.style.width = thumbWidth + 'px';
     
     // Hide scrollbar if all content is visible
-    if (visibleRatio >= 1) {
+    if (visibleRatio >= 0.99) {
         scrollbarTrack.style.display = 'none';
     } else {
         scrollbarTrack.style.display = 'block';
@@ -184,7 +192,8 @@ document.addEventListener('mousemove', (e) => {
     
     const deltaX = e.pageX - scrollbarStartX;
     const newLeft = scrollbarStartLeft + deltaX;
-    const maxThumbPos = container.offsetWidth - scrollbarThumb.offsetWidth;
+    const scrollbarTrackWidth = scrollbarTrack.offsetWidth;
+    const maxThumbPos = scrollbarTrackWidth - scrollbarThumb.offsetWidth;
     const constrainedLeft = Math.max(0, Math.min(maxThumbPos, newLeft));
     
     const scrollPercent = maxThumbPos === 0 ? 0 : constrainedLeft / maxThumbPos;
@@ -206,7 +215,8 @@ scrollbarTrack.addEventListener('click', (e) => {
     const rect = scrollbarTrack.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const thumbWidth = scrollbarThumb.offsetWidth;
-    const maxThumbPos = container.offsetWidth - thumbWidth;
+    const scrollbarTrackWidth = scrollbarTrack.offsetWidth;
+    const maxThumbPos = scrollbarTrackWidth - thumbWidth;
     const newLeft = Math.max(0, Math.min(maxThumbPos, clickX - thumbWidth / 2));
     
     const scrollPercent = maxThumbPos === 0 ? 0 : newLeft / maxThumbPos;
