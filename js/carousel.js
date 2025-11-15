@@ -4,8 +4,6 @@ const track = document.getElementById('polaroidTrack');
 // Safety check
 if (!track) {
     console.error('Polaroid track element not found!');
-} else {
-    console.log('Carousel initializing...', track);
 }
 
 const container = track.parentElement;
@@ -46,15 +44,16 @@ const polaroidWidth = 200 + 32; // width + gap
 function getBoundaries() {
     const containerWidth = container.offsetWidth;
     const trackWidth = track.scrollWidth;
-    const padding = 100; // Padding from edges when at boundaries
+    const paddingLeft = 100; // Padding from left edge at start
+    const paddingRight = 150; // Padding from right edge at end (increased for visibility)
     
     // Right boundary: start with padding from left edge
     // Positive translateX moves track right, showing space on the left
-    const maxScroll = padding;
+    const maxScroll = paddingLeft;
     
     // Left boundary: ensure last polaroid has padding from right edge
-    // We need to scroll LESS far left, so subtract padding
-    const minScroll = -(trackWidth - containerWidth - padding);
+    // When scrolled all the way left, we want paddingRight pixels of content beyond the viewport
+    const minScroll = -(trackWidth - containerWidth - paddingRight);
     
     return { min: minScroll, max: maxScroll };
 }
@@ -225,14 +224,6 @@ setTimeout(() => {
     track.style.transform = `translateX(${currentTranslate}px)`;
     updateScrollbarSize();
     updateScrollbar();
-    
-    console.log('Carousel initialized:', {
-        trackWidth: track.scrollWidth,
-        containerWidth: container.offsetWidth,
-        maxScroll: max,
-        minScroll: getBoundaries().min,
-        currentTranslate
-    });
 }, 100);
 
 // Update on window resize
