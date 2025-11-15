@@ -139,15 +139,46 @@
         .image-placeholder {
             width: 100%;
             height: 500px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: 
+                radial-gradient(circle at 20% 50%, #FF6B9D 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, #FFA500 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, #C8A2C8 0%, transparent 50%),
+                #A8C8F0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Arial', sans-serif;
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
+            font-family: 'Courier New', monospace;
+            font-size: 1.5rem;
+            color: rgba(0, 0, 0, 0.6);
             position: relative;
             overflow: hidden;
+            font-weight: bold;
+        }
+
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.03) 0px,
+                    rgba(0, 0, 0, 0.03) 1px,
+                    transparent 1px,
+                    transparent 2px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.03) 0px,
+                    rgba(0, 0, 0, 0.03) 1px,
+                    transparent 1px,
+                    transparent 2px
+                );
+            pointer-events: none;
+            z-index: 2;
         }
 
         .image-placeholder::after {
@@ -157,9 +188,16 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
-                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px);
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.02) 2px,
+                    rgba(0, 0, 0, 0.02) 4px
+                );
             pointer-events: none;
+            z-index: 1;
         }
 
         /* About Section */
@@ -279,14 +317,41 @@
         .project-image {
             width: 100%;
             height: 250px;
-            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Arial', sans-serif;
-            color: rgba(255, 255, 255, 0.8);
+            font-family: 'Courier New', monospace;
+            color: rgba(0, 0, 0, 0.5);
             border-bottom: 5px solid #000;
             position: relative;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.03) 0px,
+                    rgba(0, 0, 0, 0.03) 1px,
+                    transparent 1px,
+                    transparent 2px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.03) 0px,
+                    rgba(0, 0, 0, 0.03) 1px,
+                    transparent 1px,
+                    transparent 2px
+                );
+            pointer-events: none;
+            z-index: 2;
         }
 
         .project-image::after {
@@ -296,8 +361,45 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
-                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px);
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.02) 2px,
+                    rgba(0, 0, 0, 0.02) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Project-specific backgrounds */
+        .project-image.meditime {
+            background: 
+                radial-gradient(circle at 30% 40%, #FFB5C5 0%, transparent 60%),
+                radial-gradient(circle at 70% 60%, #B5E7FF 0%, transparent 60%),
+                #FFE5D9;
+        }
+
+        .project-image.research {
+            background: 
+                radial-gradient(circle at 25% 35%, #FFF4B5 0%, transparent 55%),
+                radial-gradient(circle at 75% 65%, #FFD4B5 0%, transparent 55%),
+                #FFFACD;
+        }
+
+        .project-image.library {
+            background: 
+                radial-gradient(circle at 35% 45%, #B5FFC8 0%, transparent 60%),
+                radial-gradient(circle at 65% 55%, #B5E0FF 0%, transparent 60%),
+                #E0F7FA;
+        }
+
+        .project-image.ai-portfolio {
+            background: 
+                radial-gradient(circle at 40% 30%, #E0B5FF 0%, transparent 55%),
+                radial-gradient(circle at 60% 70%, #FFB5E0 0%, transparent 55%),
+                #F0E0FF;
         }
 
         .project-content {
@@ -404,6 +506,34 @@
             border: 2px solid #000;
         }
 
+        /* Decorative elements for retro feel */
+        .image-placeholder .text-content,
+        .project-image .text-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Add vintage dot pattern overlay */
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* Halftone effect for images */
+        .halftone-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.05) 30%);
+            background-size: 4px 4px;
+            pointer-events: none;
+            z-index: 3;
+            mix-blend-mode: multiply;
+        }
+
         /* Responsive */
         @media (max-width: 968px) {
             .nav-container {
@@ -470,7 +600,7 @@
         
         <div class="hero-image">
             <div class="image-placeholder">
-                Your Featured Work Image Here
+                <span class="text-content">[ FEATURED WORK ]</span>
             </div>
         </div>
     </section>
@@ -510,8 +640,8 @@
         
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-image" style="background: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 90%);">
-                    MediTime
+                <div class="project-image meditime">
+                    <span class="text-content">MediTime</span>
                 </div>
                 <div class="project-content">
                     <h3>MediTime</h3>
@@ -529,8 +659,8 @@
             </div>
 
             <div class="project-card">
-                <div class="project-image" style="background: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);">
-                    Research
+                <div class="project-image research">
+                    <span class="text-content">Research</span>
                 </div>
                 <div class="project-content">
                     <h3>What Makes 'Good' Graphic Design?</h3>
@@ -548,8 +678,8 @@
             </div>
 
             <div class="project-card">
-                <div class="project-image" style="background: linear-gradient(45deg, #A8EDEA 0%, #FED6E3 100%);">
-                    Case Study
+                <div class="project-image library">
+                    <span class="text-content">Case Study</span>
                 </div>
                 <div class="project-content">
                     <h3>UniMelb Library Website Usability Evaluation</h3>
@@ -567,8 +697,8 @@
             </div>
 
             <div class="project-card">
-                <div class="project-image" style="background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);">
-                    Prototype
+                <div class="project-image ai-portfolio">
+                    <span class="text-content">Prototype</span>
                 </div>
                 <div class="project-content">
                     <h3>AI Portfolio Builder Prototype</h3>
